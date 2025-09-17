@@ -1,0 +1,40 @@
+/* Each item wrapper: stack image above its text */
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+}
+
+/* Image styling: centered and sized */
+.ListIMG {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    object-fit: contain;
+    margin: 0;
+    align-self: center;
+    margin-left: 15%;
+}
+
+/* Text elements inside an item */
+.List {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+span.item {
+    display: inline-block;
+    min-width: 4rem; 
+    width: auto;     
+    text-align: center;
+    white-space: nowrap;
+    margin:0%;
+    border-style: groove;
+}
