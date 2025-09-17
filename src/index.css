@@ -2,7 +2,6 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   /* Light, clean global background + dark text */
   background-color: #f4f6f8;
   color: #213547;
@@ -15,12 +14,13 @@
 
 a {
   font-weight: 500;
-  color: #246BCF; /* use your project blue */
+  color: #246BCF; /* use project blue */
   text-decoration: none;
 }
 
 a:hover {
   color: #00B9FC; /* lighter hover blue */
+
 }
 
 body {
@@ -44,6 +44,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+
   background-color: #FFD301; /* project yellow */
   cursor: pointer;
   transition: background-color 0.25s, border-color 0.25s;

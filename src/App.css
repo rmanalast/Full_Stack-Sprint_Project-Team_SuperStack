@@ -1,19 +1,9 @@
-
-/* App.css */
-
-/* Colour Palette:
-   Yellow: #FFF44E, #FFD301
-   Blue:   #00B9FC, #246BCF
-   Neutral: #F2F3F4
-*/
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-
 /* App layout sections */
 header {
   background-color: #246BCF;

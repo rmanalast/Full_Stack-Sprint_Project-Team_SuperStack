@@ -1,0 +1,22 @@
+[
+  {
+    "title": "The Legend of Zelda",
+    "year": 1986,
+    "description": "An action-adventure game where Link saves Princess Zelda and the kingdom of Hyrule."
+  },
+  {
+    "title": "Super Mario Bros",
+    "year": 1985,
+    "description": "A classic platformer starring Mario as he tries to rescue Princess Peach from Bowser."
+  },
+  {
+    "title": "Metroid",
+    "year": 1986,
+    "description": "A sci-fi action game featuring bounty hunter Samus Aran fighting space pirates."
+  },
+  {
+    "title": "Donkey Kong",
+    "year": 1981,
+    "description": "One of the earliest platform games where Mario must rescue Pauline from Donkey Kong."
+  }
+]
