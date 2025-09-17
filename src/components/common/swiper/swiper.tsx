@@ -13,15 +13,17 @@ export function SlideShow() {
 
   return (
     <>
-      <Swiper className="Swiper">
-        {slideData?.map((s) => (
-          <SwiperSlide key={s.id}>
-            <div className="Slides">
-              <img src={s.img} alt={s.alt ?? ''} />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <section>
+        <Swiper className="Swiper">
+          {slideData?.map((s) => (
+            <SwiperSlide key={s.id}>
+              <div className="Slides">
+                <img src={s.img} alt={s.alt ?? ''} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
     </>
   );
 }
