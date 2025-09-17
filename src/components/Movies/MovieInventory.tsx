@@ -2,7 +2,7 @@ import movie from '../../data/movie_inventory.json';
 
 /*
 MovieInventory.tsx
-
+For NXT LVL movies.
 The initial components for Movies specific to customer inventory. 
 It extracts object from .Json and maps to web-page.
 */ 
