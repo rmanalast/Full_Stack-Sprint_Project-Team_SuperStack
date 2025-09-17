@@ -1,6 +1,8 @@
 import movie from '../../data/movie_inventory.json';
 
 /*
+MovieInventory.tsx
+
 The initial components for Movies specific to customer inventory. 
 It extracts object from .Json and maps to web-page.
 */ 

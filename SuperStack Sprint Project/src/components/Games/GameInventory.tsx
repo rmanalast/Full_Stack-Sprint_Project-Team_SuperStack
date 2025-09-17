@@ -1,6 +1,8 @@
 import game from '../../data/game_inventory.json';
 
 /*
+GameInventory.tsx
+
 The initial components for Games specific to customer inventory. 
 It extracts object from .Json and maps to web-page.
 */ 
