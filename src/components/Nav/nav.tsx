@@ -2,7 +2,7 @@ import "./nav.css";
 
 function Nav() {
     return(<nav>
-         <div className="page-links">
+         <div className="Nav">
             <span>
                 <img
                 src="../../../public/vite.svgvite.svg"
