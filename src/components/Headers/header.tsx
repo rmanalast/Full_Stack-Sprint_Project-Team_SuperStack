@@ -1,0 +1,13 @@
+import "./Header.css";
+
+
+function Headings() {
+    return (
+        <header>
+            <h1>NXT LVL Games™</h1>
+            <span> Your local gaming and movie spot </span>
+        </header>
+)
+}
+
+export default Headings;
