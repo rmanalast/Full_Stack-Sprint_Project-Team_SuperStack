@@ -1,19 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Movies } from './components/Movies/MovieInventory';
-import { Games } from './components/Games/GameInventory';
+import Nav from "./components/Nav/nav";
+import Footer from "./components/Footers/footer";
+import Landing  from "./components/landing/landing";
+import Headings from "./components/Headers/header"
+        
+import "./App.css";
 
 function App() {
-  
-
   return (
     <>
-      <Movies/>
-      <Games/>
+      <Nav />
+      <Headings />
+      <Landing />
+      <Footer />
     </>
-  )
-}
-
-export default App
+  );
+};
+export default App;
