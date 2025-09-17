@@ -13,7 +13,7 @@ export function SlideShow() {
 
   return (
     <>
-    <section>
+    <section className='Swiper-Section'>
         <Swiper className="Swiper">
           {slideData?.map((s) => (
             <SwiperSlide key={s.id}>

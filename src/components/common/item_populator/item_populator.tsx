@@ -6,7 +6,7 @@ export function box_items(){
 
     return (
         <>
-        <section>
+        <section className="ItemPopulator">
             <header> Weekly Deals </header>
             <div className="ParentList"> 
                 {List.map((item) => 
