@@ -1,0 +1,16 @@
+nav {
+    display: flex;
+    justify-content: left;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: #FFD301;
+    align-items: center;
+}
+
+nav span {
+    margin: 0.5em;
+}
+
+nav a {
+    color: black;
+}
