@@ -1,6 +1,9 @@
 import "./landing.css";
 import SlideShow from "../common/swiper/swiper";
 import BoxItems from "../common/item_populator/item_populator";
+import { Games } from "../Games/GameInventory";
+import { Movies } from "../Movies/MovieInventory";
+import PreOrderForm from "../PreOrderForm/pre-order-form";
 
 // Import Swiper styles
 import 'swiper/react';
@@ -14,6 +17,9 @@ export function Landing() {
     <>
     <SlideShow />
     <BoxItems />
+    <Games />
+    <Movies />
+    <PreOrderForm />
     </>
     )
 };

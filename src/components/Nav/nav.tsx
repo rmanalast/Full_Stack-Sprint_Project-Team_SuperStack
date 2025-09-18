@@ -4,11 +4,7 @@ function Nav() {
     return(<nav>
          <div className="Nav">
             <span>
-                <img
-                src="../../../public/vite.svgvite.svg"
-                height={100} width={100}
-                alt = "Home" 
-                 ></img>
+                <a href="#"> Home </a>
             </span>
             <span>
                 <a href="#" > Inventory </a>
