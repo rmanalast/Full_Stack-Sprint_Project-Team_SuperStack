@@ -71,3 +71,5 @@ easier to comunicate with the public about their planned events.
     > T.5 : App Stylesheet (P2) (Consulted and engaged in brainstorming sessions)
 
     > T.1 : Set up Project Git Repository (P0) (Kanban board and set up Issues)
+
+    > T.1 : Set up Project Git Repository (P0) (Kanban board and set up Issues)
