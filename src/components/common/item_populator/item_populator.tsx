@@ -1,22 +1,43 @@
-import InventoryList from "./itemsList";
 import "./item_populator.css";
+import type {Inventory} from "../../../data/itemsList";
 
-export function box_items(){
-    const List = InventoryList
+function box_items(
+    {
+        itemsList,
+        sortingtype,
+        listVal
+    }:
+    {
+        itemsList: Inventory[],
+        sortingtype?: string | boolean | number,
+        listVal?: keyof Inventory
+    }
+){
+
+
+function sort(){
+    if (sortingtype != undefined && listVal != undefined) {
+        const filteredList: Inventory[] = itemsList.filter((item) => item[listVal] == sortingtype);
+
+        return filteredList;
+    }
+    else {
+        return itemsList;
+    }}
+
+const List: Inventory[] = sort();
 
     return (
         <>
         <section className="ItemPopulator">
-            <header> Weekly Deals </header>
             <div className="ParentList"> 
                 {List.map((item) => 
-                <span className="item" key={item.sku}>
-                    <img className="ListIMG" src={item?.image} height={100} 
-                    width={100} alt={item.alt} />
-                    <a className="List"> {item.name}</a>
-                    <a className="List"> ${item.price}</a>
-                    <a className="List"> {item.description}</a> 
-                </span>)}
+                <div className="ChildItem" key={item.sku}>
+                    <img className="ChildIMG" src={item?.Image.src} alt={item.Image.alt ?? item.name} />
+                    <p className="ChildContent"> {item.name}</p>
+                    <p className="ChildContent"> ${item.price}</p>
+                    <p className="ChildContent"> {item.description}</p> 
+                </div>)}
             </div>
         </section>
         </>
