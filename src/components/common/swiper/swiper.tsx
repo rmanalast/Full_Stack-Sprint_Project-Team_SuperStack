@@ -24,6 +24,7 @@ export function SlideShow() {
         {slideData?.map((s) => (
           <SwiperSlide key={s.id}>
             <div className="Slides">
+              <p>{s.alt}</p>
               <img className="SwiperIMG"src={s.img} alt={s.alt ?? ''} />
             </div>
           </SwiperSlide>
