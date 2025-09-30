@@ -1,6 +1,7 @@
 import Landing  from "./components/landing/landing";
 import "./App.css";
 import { Layout } from "./components/common/layout/layout";
+import WishlistPage from "./pages/WishlistPage/WishlistPage";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -17,7 +18,7 @@ function App() {
             <Route index element={<Landing />} />
 
             <Route path="inventory" />
-            <Route path="wishlist" />
+            <Route path="wishlist" element={<WishlistPage />} />
             <Route path="rental" />
             <Route path="cart" />
           </Route>
