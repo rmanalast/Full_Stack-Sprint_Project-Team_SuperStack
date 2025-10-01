@@ -7,5 +7,12 @@
 .Swiper-Section {
     height: 150px;
     width: 600px;
+}
+
+.Slides {
     background-color: #FFD301;
+}
+.Slides p {
+    margin-top: 0%;
+    font-weight: bolder;
 }
