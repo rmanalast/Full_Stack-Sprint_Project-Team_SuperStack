@@ -1,10 +1,12 @@
 import "./landing.css";
 import SlideShow from "../common/swiper/swiper";
 import BoxItems from "../common/item_populator/item_populator";
-import { Games } from "../Games/GameInventory";
-import { Movies } from "../Movies/MovieInventory";
+
 import PreOrderForm from "../PreOrderForm/pre-order-form";
 import InventoryList from "../../data/itemsList";
+import { DisplayInventory } from "../SuperInventory/AllInventory";
+import movie from '../../data/movie_inventory.json';
+import game from '../../data/game_inventory.json';
 
 // Import Swiper styles
 import 'swiper/react';
@@ -23,9 +25,10 @@ export function Landing() {
         listVal="isOnSale"
         sortingtype={true}
         />
-    <Games />
-    <Movies />
+    <DisplayInventory label="Movies" items={movie} />
+    <DisplayInventory label="Games" items={game} />
     <PreOrderForm />
+    
     </>
     )
 };
