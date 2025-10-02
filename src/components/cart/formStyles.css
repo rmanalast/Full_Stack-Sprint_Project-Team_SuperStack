@@ -1,0 +1,64 @@
+.cart__form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  float:left;
+}
+
+.cart__form h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.cart__form p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+}
+
+.cart__form form > div {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart__form label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+.cart__form input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.cart__form input[type="text"]:focus {
+  border-color: #0078d4;
+  outline: none;
+}
+
+.cart__form button[type="submit"] {
+  padding: 12px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cart__form button[type="submit"]:hover {
+  background-color: #005fa3;
+}

@@ -1,7 +1,7 @@
 import Landing  from "./components/landing/landing";
 import "./App.css";
 import { Layout } from "./components/common/layout/layout";
-
+import { ContactForm } from "./components/cart/CartForm";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
             <Route path="inventory" />
             <Route path="wishlist" />
             <Route path="rental" />
-            <Route path="cart" />
+            <Route path="cart" element={<ContactForm />} />
           </Route>
       </Routes>
   );
