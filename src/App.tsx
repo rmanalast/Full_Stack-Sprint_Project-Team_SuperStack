@@ -1,11 +1,15 @@
 import Landing  from "./components/landing/landing";
 import "./App.css";
 import { Layout } from "./components/common/layout/layout";
-import WishlistPage from "./pages/WishlistPage/WishlistPage";
+import WishlistPage from "./pages/WishlistPage/wishlistPage.tsx";
+import InventoryList from "./data/itemsList";
+
+import { useState } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+    const [inventory, updateInventory] = useState(InventoryList);
   return (
       <Routes>
           {/* The root path renders <Layout>. That component contains an <Outlet>
@@ -18,7 +22,7 @@ function App() {
             <Route index element={<Landing />} />
 
             <Route path="inventory" />
-            <Route path="wishlist" element={<WishlistPage />} />
+            <Route path="wishlist" element={<WishlistPage itemList={inventory} itemUpdater={updateInventory}/>}/>
             <Route path="rental" />
             <Route path="cart" />
           </Route>

@@ -1,9 +1,21 @@
 import { useState } from "react";
-import WishListForm from "../../forms/WishListForm/WishListForm";
+import WishListForm from "../../forms/WishlistForm/wishListForm";
+import BoxItems from "../../components/common/item_populator/item_populator"
+import type { Inventory } from "../../data/itemsList";
+import "./WishlistPage.css";
 
 /* This is the wishlist page where users can view and manage their saved notification emails. */
 
-function WishlistPage() {
+function WishlistPage(
+  {
+    itemList,
+    itemUpdater
+  }:
+  {
+    itemList: Inventory[];
+    itemUpdater: React.Dispatch<React.SetStateAction<Inventory[]>>
+  }
+) {
   // State to hold notification emails
   const [notifications, setNotifications] = useState<string[]>([]);
 
@@ -18,9 +30,14 @@ function WishlistPage() {
         <h1>WishList</h1>
       </header>
       <main>
-        <p>
-          This is the feature page for users to add items to their wish list.
-        </p>
+        <BoxItems 
+          itemsList={itemList} 
+          itemUpdater={itemUpdater}
+          sortingtype={true} 
+          listVal="isWishListed"
+          allowRemove={true}
+        />
+          List of items in your wishlist.
 
         {/* I.2 Form Component */}
         <WishListForm
