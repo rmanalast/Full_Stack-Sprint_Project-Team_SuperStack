@@ -37,7 +37,7 @@ export function ContactForm(){
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor ="name"> Your Name</label>
-                    <input type="text" id = "name" value={contact.name} onChange={(e) => setContact({ ...contact, name: e.target.value })} required />
+                    <input type="text" id = "name" value={contact.name} onChange={(e) => setContact({ ...contact, name: e.target.value })} required minLength={3} />
                 </div>
                 <div>
                     <label htmlFor ="email"> Email</label>
@@ -45,15 +45,15 @@ export function ContactForm(){
                 </div>
                 <div>
                     <label htmlFor ="card">Card Info </label>
-                    <input type="text" id = "card" value={contact.card} onChange={(e) => setContact({ ...contact, card: e.target.value })} required/>
+                    <input type="text" id = "card" value={contact.card} onChange={(e) => setContact({ ...contact, card: e.target.value })} required minLength={10}/>
                 </div>
                 <div>
                     <label htmlFor ="expiry">Expiry Date </label>
-                    <input type="text" id = "expiry" value={contact.expiry} onChange={(e) => setContact({ ...contact, expiry: e.target.value })} required/>
+                    <input type="text" id = "expiry" value={contact.expiry} onChange={(e) => setContact({ ...contact, expiry: e.target.value })} required minLength={4} />
                 </div>
                 <div>
                     <label htmlFor ="cve">CVE </label>
-                    <input type="text" id = "cve" value={contact.cve} onChange={(e) => setContact({ ...contact, cve: e.target.value })} required/>
+                    <input type="text" id = "cve" value={contact.cve} onChange={(e) => setContact({ ...contact, cve: e.target.value })} required minLength={3}/>
                 </div>
                 <div>
                     <button type = "submit">
