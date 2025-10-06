@@ -1,15 +1,21 @@
+//Ap.tsx
 import Landing  from "./components/landing/landing";
 import "./App.css";
 import { Layout } from "./components/common/layout/layout";
+import InventoryList from "./data/itemsList.js";
 import {Rentals} from "./pages/Rental.js";
-
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { ContactForm } from "./components/cart/CartForm";
+import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import type { Inventory } from './data/itemsList';
 
-import InventoryList from "./data/itemsList.js";
+
 
 function App() {
-  const [inventory, updateInventory] = useState(InventoryList)
+  const [cartItems, setCartItems] = useState<Inventory[]>([]);
+  const [inventory, updateInventory] = useState(InventoryList);
   return (
       <Routes>
           {/* The root path renders <Layout>. That component contains an <Outlet>
@@ -19,12 +25,12 @@ function App() {
               Renders the different pages in the Layout. 
               index: indicates route at the root of this path (/)
             */}
-            <Route index element={<Landing />} />
+            <Route index element={<Landing cartItems={cartItems} setCartItems={setCartItems} />} />
 
             <Route path="inventory" />
             <Route path="wishlist" />
             <Route path="rental" element={<Rentals RentalList={inventory}  setRental={updateInventory}/>}/>
-            <Route path="cart" />
+            <Route path="cart" element={<ContactForm cartItems={cartItems} setCartItems={setCartItems}/>} />
           </Route>
       </Routes>
   );
