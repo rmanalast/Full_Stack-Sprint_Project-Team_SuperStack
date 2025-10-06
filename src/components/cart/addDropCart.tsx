@@ -6,7 +6,7 @@ type CartPageProps = {
 };
 
 export function AddCart({ cartItems, setCartItems }: CartPageProps) {
-  function removeFromCart(sku: string) {
+  function removeFromCart(sku: number) {
     // Remove item from cart by filtering out the item with matching sku
     setCartItems(cartItems.filter(item => item.sku !== sku));
   }

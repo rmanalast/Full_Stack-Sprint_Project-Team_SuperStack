@@ -4,7 +4,6 @@ import BoxItems from "../common/item_populator/item_populator";
 import PreOrderForm from "../PreOrderForm/pre-order-form";
 import type { Inventory } from "../../data/itemsList";
 import { DisplayInventory } from "../SuperInventory/AllInventory";
-import type { Dispatch, SetStateAction } from 'react';
 
 // Import Swiper styles
 import 'swiper/react';
@@ -19,10 +18,10 @@ export function Landing(
       {
         itemList: Inventory[];
         itemUpdater: React.Dispatch<React.SetStateAction<Inventory[]>>
-      })
+      }){
   
     function addToCart(item: Inventory) {
-    setCartItems(prev => {
+    itemUpdater(prev => {
     if (prev.some(i => i.sku === item.sku)) return prev; 
     return [...prev, item];
      });
@@ -46,7 +45,7 @@ export function Landing(
         />
     
 
-    <DisplayInventory items={InventoryList} shareAddCart={addToCart} />
+    <DisplayInventory items={itemList} shareAddCart={addToCart} />
     <PreOrderForm />
     
     </>
