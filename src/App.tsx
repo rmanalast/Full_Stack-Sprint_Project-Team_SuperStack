@@ -19,8 +19,7 @@ function App() {
               Renders the different pages in the Layout. 
               index: indicates route at the root of this path (/)
             */}
-            <Route index element={<Landing />} />
-
+            <Route index element={<Landing itemList={inventory} itemUpdater={updateInventory} />} />
             <Route path="inventory" />
             <Route path="wishlist" element={<WishlistPage itemList={inventory} itemUpdater={updateInventory}/>}/>
             <Route path="rental" />
