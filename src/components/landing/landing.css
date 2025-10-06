@@ -1,8 +1,13 @@
 h2 {
     font-size: larger;
+    margin-top: 4rem;
 }
 
 main {
     align-items: center;
     justify-items: center;
+}
+
+.announcements {
+    margin-top: 1rem;
 }

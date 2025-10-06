@@ -1,4 +1,4 @@
-.ChildIMG {
+.ChildImage {
     width: 4rem;
     height: 4rem;
     object-fit: cover;
@@ -29,8 +29,12 @@
     justify-content: space-evenly;
 }
 
-div.ParentList {
+div.ChildContainer {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
+    gap: 20px;
+}
+
+.ChildButton {
+    width: 5rem;
 }

@@ -1,8 +1,18 @@
-.Swiper {
-    display: grid;
-    align-self: center;
-    text-align: center;
-    border-style: double;
-    size: 75vw;
+.SwiperIMG {
+    height: 10rem;
+    width: 10rem;
+    object-fit:contain;
+}
+
+.Swiper-Section {
+    height: 150px;
+    width: 600px;
+}
+
+.Slides {
     background-color: #FFD301;
+}
+.Slides p {
+    margin-top: 0%;
+    font-weight: bolder;
 }
