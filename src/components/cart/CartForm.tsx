@@ -1,7 +1,11 @@
-import { useState, FormEvent } from 'react';
+// CarForm.tsx
+import { useState } from 'react';
+import type { FormEvent } from 'react';
 import './cartStyles.css';
 import { AddCart } from './addDropCart';
 import './formStyles.css'
+import type { Inventory } from '../../data/itemsList';
+
 
 // Define a TypeScript type for the contact form data
 type Contact = {
@@ -12,8 +16,12 @@ type Contact = {
     cve:string;
 };
 
+type ContactFormProps = {
+  cartItems: Inventory[];
+  setCartItems: React.Dispatch<React.SetStateAction<Inventory[]>>;
+};
 // Define the ContactForm component
-export function ContactForm(){
+export function ContactForm({ cartItems, setCartItems }: ContactFormProps){
 
     const [contact, setContact] = useState<Contact>({
         name:"",
@@ -24,8 +32,12 @@ export function ContactForm(){
 
     })
 
+    const [isPaid, setIsPaid] = useState(false);
+
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setIsPaid(true);
+    console.log('Payment complete:', contact);
     console.log('Submitted details:', contact);
 }
     
@@ -61,8 +73,11 @@ export function ContactForm(){
                     </button>
                 </div>
             </form>  
+            <div>
+                Status: {isPaid ? <strong>Payment Complete</strong> : <em>Not Paid For</em>}
+            </div>
 
-            <AddCart />
+            <AddCart cartItems={cartItems} setCartItems={setCartItems} />
                     
         </section>
 

@@ -3,18 +3,32 @@ import SlideShow from "../common/swiper/swiper";
 import BoxItems from "../common/item_populator/item_populator";
 
 import PreOrderForm from "../PreOrderForm/pre-order-form";
-import InventoryList from "../../data/itemsList";
+import InventoryList, { type Inventory } from "../../data/itemsList";
 import { DisplayInventory } from "../SuperInventory/AllInventory";
-import movie from '../../data/movie_inventory.json';
-import game from '../../data/game_inventory.json';
+//import movie from '../../data/movie_inventory.json';
+// import game from '../../data/game_inventory.json';
+import type { Dispatch, SetStateAction } from 'react';
 
 // Import Swiper styles
 import 'swiper/react';
 import 'swiper/swiper.css'
 
-// import required modules
 
-export function Landing() {
+type LandingProps = {
+    cartItems: Inventory[];
+    setCartItems: Dispatch<SetStateAction<Inventory[]>>;
+  
+};
+
+export function Landing({ setCartItems }: LandingProps) {
+    function addToCart(item: Inventory) {
+    setCartItems(prev => {
+    if (prev.some(i => i.sku === item.sku)) return prev; 
+    return [...prev, item];
+     });
+    }
+
+    
     // Swiper things
     return (
     <>
@@ -25,12 +39,14 @@ export function Landing() {
         listVal="isOnSale"
         sortingtype={true}
         />
-    <DisplayInventory label="Movies" items={movie} />
-    <DisplayInventory label="Games" items={game} />
+    
+
+    <DisplayInventory items={InventoryList} shareAddCart={addToCart} />
     <PreOrderForm />
     
     </>
     )
 };
+
 
 export default Landing;
