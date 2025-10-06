@@ -16,6 +16,9 @@ export function Landing() {
     // Swiper things
     return (
     <>
+    <h2 className="announcements">
+        ANNOUNCEMENTS
+    </h2>
     <SlideShow />
     <h2>Weekly Deals</h2>
     <BoxItems

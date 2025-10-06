@@ -15,7 +15,7 @@ export type Inventory = {
     isOnSale: boolean,
     isInCart: boolean,
     isWishListed: boolean
-}
+};
 
 export const InventoryList: Inventory[] = [
     // 10 Video Games
@@ -26,7 +26,7 @@ export const InventoryList: Inventory[] = [
         price: 12.99,
         productType: "Video Game",
         Image: { src: "https://imgs.search.brave.com/dIAG08GtmO3oJts-FIOp77r0EENpKQVuvhwE4MKwrRo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aGVn/YW1lcG9zdC5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjUv/MDgvYWxsLW1hcnZl/bC1yaXZhbHMtc2Vh/c29uLTQtbGVha3Mt/My04NjB4NDg0Lndl/YnA", alt: "Marvel Rivals cover" },
-        rented: { isRented: false, isSelected: false },
+        rented: { isRented: true, isSelected: true },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -38,7 +38,7 @@ export const InventoryList: Inventory[] = [
         price: 10.26,
         productType: "Video Game",
         Image: { src: "https://cdn2.unrealengine.com/card-shortcut-01-1920x1080-6d9c21c4abfb.jpg", alt: "Fortnite Battle Royale" },
-        rented: { isRented: false, isSelected: false },
+        rented: { isRented: false, isSelected: true },
         isOnSale: true,
         isInCart: false,
         isWishListed: true
@@ -74,7 +74,7 @@ export const InventoryList: Inventory[] = [
         price: 24.99,
         productType: "Video Game",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg", alt: "God of War cover" },
-        rented: { isRented: true, isSelected: true },
+        rented: { isRented: true, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
