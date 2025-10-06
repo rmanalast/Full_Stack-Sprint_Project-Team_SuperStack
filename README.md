@@ -1,5 +1,5 @@
 
-#  NXT LVL Games™ Movies and Games Store
+#  NXT LVL Games™ Movies and Games Store 
 
 ## SuperStack Team Members 
 
@@ -40,9 +40,9 @@ easier to comunicate with the public about their planned events.
 
 ## Work Completed:
 
-### Sprint 1:
+### Sprint 1️⃣:
 
-#### Raven 
+#### Raven:
 
     > T.1 : Set up Project Git Repository (P0)
 
@@ -52,7 +52,7 @@ easier to comunicate with the public about their planned events.
 
     > High Level Feature-002 Pre-Order Form
 
-### Rylan 
+### Rylan:
 
     > T.3 : Project Readme (P1) 
 
@@ -64,7 +64,7 @@ easier to comunicate with the public about their planned events.
 
     > T.4 App Integration 
 
-### Akeem 
+### Akeem:
 
     > High Level Feature-001 Customer Inventory
 
@@ -72,4 +72,21 @@ easier to comunicate with the public about their planned events.
 
     > T.1 : Set up Project Git Repository (P0) (Kanban board and set up Issues)
 
-    > T.1 : Set up Project Git Repository (P0) (Kanban board and set up Issues)
+
+### Sprint 2️⃣:
+
+#### Raven:
+
+    > High Level feature: WishList Page 
+
+#### Rylan:
+
+    > High Level Feature: Rental Page
+
+#### Akeem: 
+
+    > High Level Feature: Cart Page
+
+
+
+
