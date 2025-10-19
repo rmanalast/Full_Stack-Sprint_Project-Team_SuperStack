@@ -8,10 +8,6 @@ export type Inventory = {
         src: string,
         alt: string
     };
-    rented: {
-        isRented: boolean,
-        isSelected: boolean,
-    };
     isOnSale: boolean,
     isInCart: boolean,
     isWishListed: boolean
@@ -26,7 +22,6 @@ export const InventoryList: Inventory[] = [
         price: 12.99,
         productType: "Video Game",
         Image: { src: "https://imgs.search.brave.com/dIAG08GtmO3oJts-FIOp77r0EENpKQVuvhwE4MKwrRo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aGVn/YW1lcG9zdC5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjUv/MDgvYWxsLW1hcnZl/bC1yaXZhbHMtc2Vh/c29uLTQtbGVha3Mt/My04NjB4NDg0Lndl/YnA", alt: "Marvel Rivals cover" },
-        rented: { isRented: true, isSelected: true },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -38,7 +33,6 @@ export const InventoryList: Inventory[] = [
         price: 10.26,
         productType: "Video Game",
         Image: { src: "https://cdn2.unrealengine.com/card-shortcut-01-1920x1080-6d9c21c4abfb.jpg", alt: "Fortnite Battle Royale" },
-        rented: { isRented: false, isSelected: true },
         isOnSale: true,
         isInCart: false,
         isWishListed: true
@@ -50,7 +44,6 @@ export const InventoryList: Inventory[] = [
         price: 19.99,
         productType: "Video Game",
         Image: { src: "https://imgs.search.brave.com/yyeNj55cOS2IaHIe_KMbg1_UmnKAVJymD_B8by4cQhg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9nbWVk/aWEucGxheXN0YXRp/b24uY29tL2lzL2lt/YWdlL1NJRVBEQy90/aGUtbGFzdC1vZi11/cy1wYXJ0LWlpLXVw/Z3JhZGVyLWJhY2tn/cm91bmQtZGVza3Rv/cC0wMS1lbi0zMW9j/dDIzPyRuYXRpdmUk", alt: "The Last of Us Part II cover" },
-        rented: { isRented: true, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -62,7 +55,6 @@ export const InventoryList: Inventory[] = [
         price: 29.99,
         productType: "Video Game",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg", alt: "Super Mario Odyssey cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: true,
         isInCart: true,
         isWishListed: false
@@ -74,7 +66,6 @@ export const InventoryList: Inventory[] = [
         price: 24.99,
         productType: "Video Game",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg", alt: "God of War cover" },
-        rented: { isRented: true, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -86,7 +77,6 @@ export const InventoryList: Inventory[] = [
         price: 34.99,
         productType: "Video Game",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg", alt: "Zelda: Breath of the Wild cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -98,7 +88,6 @@ export const InventoryList: Inventory[] = [
         price: 14.99,
         productType: "Video Game",
         Image: { src: "https://imgs.search.brave.com/_sZhRgrlo6GT0l6KpztXlAvWlnvIml-hanga9n-yceM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/Z2cuZGVhbHMvMWYv/ODQvNDIwNTE5N2E3/NjA0ZjEyZjk4YWY3/M2JmZWIwOWZiNzNl/YWRiXzI4OGNyMTYy/LmpwZw", alt: "Spider-Man: Miles Morales cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: true,
         isInCart: false,
         isWishListed: true
@@ -110,7 +99,6 @@ export const InventoryList: Inventory[] = [
         price: 39.99,
         productType: "Video Game",
         Image: { src: "https://imgs.search.brave.com/OwkyrnLSWdXUX2t45RL3yV49ZP7-klJAKL70gc89ZcQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2lraWEubm9j/b29raWUubmV0L2hv/cml6b256ZXJvZGF3/bi9pbWFnZXMvZS9l/NS9Ib3Jpem9uX0Zv/cmJpZGRlbl9XZXN0/LmpwZy9yZXZpc2lv/bi9sYXRlc3Qvc2Nh/bGUtdG8td2lkdGgt/ZG93bi8yNjg_Y2I9/MjAyMDA2MTMwMjI0/Mjg", alt: "Horizon Forbidden West cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -122,7 +110,6 @@ export const InventoryList: Inventory[] = [
         price: 44.99,
         productType: "Video Game",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/8/8d/Elden_Ring_cover.jpg", alt: "Elden Ring cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: true,
         isInCart: false,
         isWishListed: true
@@ -134,7 +121,6 @@ export const InventoryList: Inventory[] = [
         price: 14.99,
         productType: "Video Game",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/9/9b/StardewValleyCover.jpg", alt: "Stardew Valley cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -148,7 +134,6 @@ export const InventoryList: Inventory[] = [
         price: 7.5,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg", alt: "Inception movie cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: true
@@ -160,7 +145,6 @@ export const InventoryList: Inventory[] = [
         price: 9.99,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg", alt: "The Godfather cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: true,
         isInCart: false,
         isWishListed: false
@@ -172,7 +156,6 @@ export const InventoryList: Inventory[] = [
         price: 8.99,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg", alt: "The Shawshank Redemption cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: false,
         isInCart: true,
         isWishListed: false
@@ -184,7 +167,6 @@ export const InventoryList: Inventory[] = [
         price: 11.99,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg", alt: "The Dark Knight cover" },
-        rented: { isRented: true, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -196,7 +178,6 @@ export const InventoryList: Inventory[] = [
         price: 6.99,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/8/82/Pulp_Fiction_cover.jpg", alt: "Pulp Fiction cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: true,
         isInCart: false,
         isWishListed: true
@@ -208,7 +189,6 @@ export const InventoryList: Inventory[] = [
         price: 9.5,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg", alt: "The Matrix cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -220,7 +200,6 @@ export const InventoryList: Inventory[] = [
         price: 12.0,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg", alt: "Interstellar cover" },
-        rented: { isRented: true, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false
@@ -232,7 +211,6 @@ export const InventoryList: Inventory[] = [
         price: 10.0,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/5/53/Parasite_%282019_film%29.png", alt: "Parasite cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: true
@@ -244,7 +222,6 @@ export const InventoryList: Inventory[] = [
         price: 5.99,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg", alt: "Toy Story cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: true,
         isInCart: false,
         isWishListed: false
@@ -256,7 +233,6 @@ export const InventoryList: Inventory[] = [
         price: 13.99,
         productType: "Movie",
         Image: { src: "https://upload.wikimedia.org/wikipedia/en/0/0c/The_Lord_of_the_Rings_The_Fellowship_of_the_Ring_%281998%29.jpg", alt: "LOTR: Fellowship cover" },
-        rented: { isRented: false, isSelected: false },
         isOnSale: false,
         isInCart: false,
         isWishListed: false

@@ -1,0 +1,1 @@
+import rentals  from "../data/rentals";

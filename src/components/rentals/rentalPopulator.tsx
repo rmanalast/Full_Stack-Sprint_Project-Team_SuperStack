@@ -1,4 +1,4 @@
-import type { Inventory } from "../../data/itemsList";
+import type { Rental } from "../../data/rentals";
 
 
 export function RentalPopulator (
@@ -7,13 +7,13 @@ export function RentalPopulator (
         updateSelected
     }:
     {
-        rentalInventory: Inventory[],
+        rentalInventory: Rental[],
         updateSelected: React.Dispatch<React.SetStateAction<Inventory[]>>,
     }
 ) {
-    const filteredList: Inventory[] = rentalInventory.filter((item) => item.rented.isRented == false);
+    const filteredList: Rental[] = rentalInventory.filter((item) => item.isRented == false);
 
-    const handleButtonClick = (rentalClicked: Inventory): void => {
+    const handleButtonClick = (rentalClicked: Rental): void => {
         updateSelected(oldSelectedState => {
             // map the array to copy it, modifying if we need to
             return oldSelectedState.map(t => {

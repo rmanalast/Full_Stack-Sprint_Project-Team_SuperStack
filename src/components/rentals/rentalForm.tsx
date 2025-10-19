@@ -1,4 +1,4 @@
-import type { Inventory } from "../../data/itemsList"
+import Rental from "../../data/itemsList"
 import { RentalSelected } from "./rentalSelected"
 
 import "./rentalForm.css"
@@ -10,7 +10,7 @@ export function RentalForm({
     }:
     {
         rentalInventory: Inventory[],
-        updateSelected: React.Dispatch<React.SetStateAction<Inventory[]>>,
+        updateSelected: React.Dispatch<React.SetStateAction<Rental[]>>,
     }
 ) {
 
