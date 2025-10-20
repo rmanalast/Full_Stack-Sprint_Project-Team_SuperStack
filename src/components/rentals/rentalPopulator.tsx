@@ -44,7 +44,7 @@ export function RentalPopulator (
                     <p className="ChildContent"> {rental.name}</p>
                     <p className="ChildContent"> {rental.productType}</p> 
                     <button onClick={() => {handleButtonClick(rental)}} >
-                        {rental.rented.isSelected ? 'REMOVE' : 'ADD'}
+                        {rental.isSelected ? 'REMOVE' : 'ADD'}
                     </button>
                 </div>)}
             </div>
