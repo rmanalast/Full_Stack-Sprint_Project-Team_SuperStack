@@ -39,6 +39,7 @@ export function getRentals(): Rental[] {
 
 export function changeSelected(sku: number): Rental {
     try {
+        console.log("TEST");
         const r: Rental = REPO.getItemByID(sku)
 
         if (!r) {

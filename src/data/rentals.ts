@@ -24,7 +24,7 @@ export const rentals: Rental[] = [
             alt: "Inception movie poster"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 1002,
@@ -48,7 +48,7 @@ export const rentals: Rental[] = [
             alt: "The Godfather movie poster"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 1004,
@@ -60,7 +60,7 @@ export const rentals: Rental[] = [
             alt: "Interstellar movie poster"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 1005,
@@ -84,7 +84,7 @@ export const rentals: Rental[] = [
             alt: "Pulp Fiction movie poster"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 1007,
@@ -96,7 +96,7 @@ export const rentals: Rental[] = [
             alt: "Forrest Gump movie poster"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 1008,
@@ -119,8 +119,8 @@ export const rentals: Rental[] = [
             src: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
             alt: "The Shawshank Redemption movie poster"
         },
-        isRented: false,
-        isSelected: true
+        isRented: true,
+        isSelected: false
     },
     {
         sku: 1010,
@@ -132,7 +132,7 @@ export const rentals: Rental[] = [
             alt: "Avengers: Endgame movie poster"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
 
     // Video Games
@@ -146,7 +146,7 @@ export const rentals: Rental[] = [
             alt: "The Legend of Zelda: Breath of the Wild cover"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 2002,
@@ -170,7 +170,7 @@ export const rentals: Rental[] = [
             alt: "God of War (2018) cover"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 2004,
@@ -182,7 +182,7 @@ export const rentals: Rental[] = [
             alt: "Elden Ring game cover"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 2005,
@@ -194,7 +194,7 @@ export const rentals: Rental[] = [
             alt: "SpiderMan: Miles Morales cover"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 2006,
@@ -218,7 +218,7 @@ export const rentals: Rental[] = [
             alt: "Cyberpunk 2077 cover"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 2008,
@@ -230,7 +230,7 @@ export const rentals: Rental[] = [
             alt: "Minecraft game cover"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     },
     {
         sku: 2009,
