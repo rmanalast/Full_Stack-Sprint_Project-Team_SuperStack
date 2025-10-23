@@ -1,33 +1,45 @@
 import type { Rental } from "../../data/rentals";
 
+import "./rental.css"
+
 export function RentalPopulator ({
     r,
-    onClick
+    onClick,
+    message
     }
     :
     {
     r: Rental[],
-    onClick: (sku: number) => void
+    onClick: (sku: number) => void,
+    message: string
     }) {
 
-    const filteredList: Rental[] = r.filter((item) => item.isRented == false);
+    const fr: Rental[] = r.filter((item) => item.isRented == false);
 
-    return (
-        <>
-        <section className="rentalPopulator">
-            <h2> Available Rentals</h2>
-            <div className="ParentList"> 
-                {filteredList.map((rental) => 
-                <div className="ChildItem" key={rental.sku}>
-                    <img className="ChildIMG" src={rental?.Image.src} alt={rental.Image.alt ?? rental.name} />
-                    <p className="ChildContent"> {rental.name}</p>
-                    <p className="ChildContent"> {rental.productType}</p> 
-                    <button type="button" onClick={() => {onClick(rental.sku)}} >
-                        {rental.isSelected === true ? 'REMOVE' : 'ADD'}
-                    </button>
-                </div>)}
-            </div>
-        </section>
-        </>
-    )
+  return (
+    <div className="ChildContainer">
+      {fr.length === 0 ? (
+        <div>{message}</div>
+      ) : (
+        fr.map((selectedRental) => (
+          <div className="ChildItem" key={selectedRental.sku}>
+            <img
+              className="ChildImage"
+              src={selectedRental.Image.src}
+              alt={selectedRental.Image.alt ?? selectedRental.name}
+            />
+            <p className="ChildContent">{selectedRental.name}</p>
+            <p className="ChildContent">{selectedRental.productType}</p>
+            <button
+              className="ChildButton"
+              type="button"
+              onClick={() => onClick(selectedRental.sku)}
+            >
+              {selectedRental.isSelected === true ? 'REMOVE' : 'ADD'}
+            </button>
+          </div>
+        ))
+      )}
+    </div>
+  );
 }

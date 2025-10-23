@@ -1,7 +1,6 @@
-import { RentalSelected } from "./rentalSelected"
-
 import "./rentalForm.css"
 import { type Rental } from "../../data/rentals";
+import { RentalPopulator } from "./rentalPopulator";
 
 
 export function RentalForm({
@@ -35,10 +34,10 @@ export function RentalForm({
         <section className="rentals-page">
             <form onSubmit={handleSubmit}>
                 <h2>Rental Sign Out Form</h2>
-                <div className="FormPage">
-                    <RentalSelected r={selected}onClick={
+                <div>
+                    <RentalPopulator message={"No Rentals Selected"}r={selected}onClick={
                     async (id: number) => {
-                                await onClick(id);}}></RentalSelected>
+                                await onClick(id);}}></RentalPopulator>
                     </div>
                     <label htmlFor="selector">Select Length of Time</label>
                     <select className="periodRental" id="selector">

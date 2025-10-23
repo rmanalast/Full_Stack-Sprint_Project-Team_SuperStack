@@ -26,7 +26,6 @@ export async function toggleIsRented(sku: number) {
         await REPO.toggleRented(t.sku);
 };
 
-
 export async function toggleIsSelected(sku: number) {
         const t: Rental = await REPO.getItemByID(sku);
 
