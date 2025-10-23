@@ -1,19 +1,25 @@
 import {RentalForm} from "../components/rentals/rentalForm"
 import {RentalPopulator} from "../components/rentals/rentalPopulator"
-import { RentalProvider } from "../hooks/useRental"
+import { useRental } from "../hooks/useRental"
+
 
 // Rentals page to populate available rentals and add them to cart. anything with rentalCart true
 export function Rentals() {
 
+
+    // SET HOOK 
+    const {
+        rentals,
+        toggleRented,
+        toggleSelected
+    } = useRental()
     return (
-    <RentalProvider>
             <>
             <section>
-            <RentalPopulator
+            <RentalPopulator r={rentals} onClick={async (id: number) => {await toggleSelected(id);}}
             /> 
             </section>
-            <RentalForm ></RentalForm>
+            <RentalForm r={rentals} onClick={async (id: number) => {await toggleSelected(id);}} onSubmit={async (id: number) => {await toggleRented(id);}}></RentalForm>
             </>    
-        </RentalProvider>
     )
     }

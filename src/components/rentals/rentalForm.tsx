@@ -1,42 +1,44 @@
 import { RentalSelected } from "./rentalSelected"
 
 import "./rentalForm.css"
-import { useRental } from "../../hooks/useRental";
 import { type Rental } from "../../data/rentals";
 
 
-export function RentalForm() {
+export function RentalForm({
+    r,
+    onClick, //toggle isSelected
+    onSubmit //toggle isRented
+}
+:
+{
+    r: Rental[],
+    onClick: (sku: number) => void
+    onSubmit: (sku: number) => void
+}) {
 
-    const {
-        rentals,
-        updateRentals,
-    } = useRental()
+    const selected: Rental[] = r.filter((s) => s.isSelected == true && s.isRented == false)
 
     const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Submitted");
 
-    const updatedRentals = rentals.map((rental) => {
-        const isSelected = selected.find(sel => sel.sku === rental.sku);
-            if (isSelected) {
-            return {
-                ...rental, isRented: true
-            };
-            }
-        return rental;
-    });
-
-    updateRentals(updatedRentals);
-    };
-
-    const selected: Rental[] = rentals.filter((rentals) => rentals.isSelected == true && rentals.isRented == false)
+        r.map((s) => {
+            const i = selected.find(sel => sel.sku === s.sku);
+                if (i) {
+                onSubmit(i.sku)
+                };
+                }
+            )
+        };
 
     return (
         <section className="rentals-page">
             <form onSubmit={handleSubmit}>
                 <h2>Rental Sign Out Form</h2>
                 <div className="FormPage">
-                    <RentalSelected></RentalSelected>
+                    <RentalSelected r={selected}onClick={
+                    async (id: number) => {
+                                await onClick(id);}}></RentalSelected>
                     </div>
                     <label htmlFor="selector">Select Length of Time</label>
                     <select className="periodRental" id="selector">

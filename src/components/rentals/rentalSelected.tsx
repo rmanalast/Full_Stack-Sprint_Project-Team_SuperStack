@@ -1,20 +1,21 @@
-import { useRental } from "../../hooks/useRental";
+import type { Rental } from "../../data/rentals";
 import "./rental.css"
 
-export function RentalSelected() { 
+export function RentalSelected({
+    r,
+    onClick
+}:
+{
+  r: Rental[],
+  onClick: (id: number) => void
+}) { 
 
-    const {
-        rentals,
-        toggle
-    } = useRental()
-
-    const selected = rentals.filter((s) => s.isSelected === true && s.isRented === false)
   return (
     <div className="ChildContainer">
-      {selected.length === 0 ? (
+      {r.length === 0 ? (
         <div>No rentals selected</div>
       ) : (
-        selected.map((selectedRental) => (
+        r.map((selectedRental) => (
           <div className="ChildItem" key={selectedRental.sku}>
             <img
               className="ChildImage"
@@ -26,7 +27,7 @@ export function RentalSelected() {
             <button
               className="ChildButton"
               type="button"
-              onClick={() => toggle(selectedRental.sku)}
+              onClick={() => onClick(selectedRental.sku)}
             >
               REMOVE
             </button>

@@ -1,11 +1,16 @@
 import type { Rental } from "../../data/rentals";
-import { useRental } from "../../hooks/useRental";
 
-export function RentalPopulator () {
+export function RentalPopulator ({
+    r,
+    onClick
+    }
+    :
+    {
+    r: Rental[],
+    onClick: (sku: number) => void
+    }) {
 
-    const { rentals, toggle } = useRental();
-
-    const filteredList: Rental[] = rentals.filter((item) => item.isRented == false);
+    const filteredList: Rental[] = r.filter((item) => item.isRented == false);
 
     return (
         <>
@@ -17,7 +22,7 @@ export function RentalPopulator () {
                     <img className="ChildIMG" src={rental?.Image.src} alt={rental.Image.alt ?? rental.name} />
                     <p className="ChildContent"> {rental.name}</p>
                     <p className="ChildContent"> {rental.productType}</p> 
-                    <button type="button" onClick={() => {toggle(rental.sku)}} >
+                    <button type="button" onClick={() => {onClick(rental.sku)}} >
                         {rental.isSelected === true ? 'REMOVE' : 'ADD'}
                     </button>
                 </div>)}

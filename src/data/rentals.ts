@@ -254,6 +254,6 @@ export const rentals: Rental[] = [
             alt: "The Witcher 3: Wild Hunt game cover"
         },
         isRented: false,
-        isSelected: true
+        isSelected: false
     }
 ];
