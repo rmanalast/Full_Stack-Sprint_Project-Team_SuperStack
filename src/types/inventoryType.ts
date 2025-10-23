@@ -12,3 +12,4 @@ export type Inventory = {
     isInCart: boolean,
     isWishListed: boolean
 };
+
