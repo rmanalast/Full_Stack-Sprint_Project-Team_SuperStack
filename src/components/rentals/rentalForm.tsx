@@ -45,12 +45,29 @@ export function RentalForm() {
                         <option>14 days</option>
                         <option>30 days</option>
                     </select>
+                    {/* {selectError && (
+                        <div id="select-error" style={{ color: "crimson", marginTop: 4 }}>
+                            {selectError}
+                        </div>
+                    )} */}
 
                     <label htmlFor="name">Enter your name</label>
                     <input className="rentalInput"type="text" id="name"required={true}></input>
+                    {/* {nameError && (
+                        <div id="name-error" style={{ color: "crimson", marginTop: 4 }}>
+                            {nameError}
+                        </div>
+                    )} */}
+                    
 
                     <label htmlFor="email">Enter your email</label>
                     <input className="rentalInput"type="email" id="email"required={true}></input>
+                    {/* {emailError && (
+                        <div id="name-error" style={{ color: "crimson", marginTop: 4 }}>
+                            {emailError}
+                        </div>
+                    )} */}
+
                     <button className="rentalButton"type="submit" onSubmit={handleSubmit}>submit</button>
             </form>
         </section>

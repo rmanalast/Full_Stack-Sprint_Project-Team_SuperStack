@@ -7,13 +7,13 @@ export function Rentals() {
 
     return (
     <RentalProvider>
-        <>
-        <section>
-        <RentalPopulator
-        /> 
-        </section>
-        <RentalForm ></RentalForm>
-        </>
-    </RentalProvider>
+            <>
+            <section>
+            <RentalPopulator
+            /> 
+            </section>
+            <RentalForm ></RentalForm>
+            </>    
+        </RentalProvider>
     )
     }

@@ -1,4 +1,3 @@
-import type { Rental } from "../../data/rentals";
 import { useRental } from "../../hooks/useRental";
 import "./rental.css"
 
