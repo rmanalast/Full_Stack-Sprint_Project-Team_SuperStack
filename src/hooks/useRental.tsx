@@ -4,38 +4,52 @@ import type { Rental } from "../data/rentals";
 
 export function useRental() {
 
-    const [rentals, updateRentals] = useState<Rental[]>();
-    const [error, updateError] = useState<string>();
+    const [rentals, updateRentals] = useState<Rental[]>([]);
+    const [error, setError] = useState<string | null>();
 
-    const getTerms = async() => {
-        try {
-            const r = await services.getRentals()
 
-            updateRentals([...r])
-        } catch(e) {
-            updateError(`${e}`)
-        }};
+        const fetchRentals = async () => {
 
-    const toggle = async(sku: number, type: number) => {
-        try {
-            if (type === 1) {
-            services.changeSelected(sku);} 
-            else {
-            services.changeStatus(sku);
-            }
+      try {
+        const data = await services.getRentals();
+        updateRentals([...data]);
         }
-        catch(e) {
-            updateError(`${e}`)
-        }
+      catch(e) {
+        setError(`${e}`)
+      }
+      };
+
+    const toggleRented = async(sku: number) => {
+      try {
+        await services.toggleIsRented(sku);
+
+        await fetchRentals()
+
+      }
+      catch(e){
+        setError(`${e}`)
+      }
+    };
+
+    const toggleSelected = async(sku: number) => {
+      try {
+        await services.toggleIsSelected(sku);
+
+        await fetchRentals()
+      }
+      catch(e){
+        setError(`${e}`)
+      }
     };
 
 
-    useEffect(() =>{
-        getTerms()}, [rentals]);
+    useEffect(() => {
+      fetchRentals();
+      }, []);
 
-    
     return {
-        toggle,
         rentals,
-        error
-    }};
+        error,
+        toggleRented,
+        toggleSelected
+        }};

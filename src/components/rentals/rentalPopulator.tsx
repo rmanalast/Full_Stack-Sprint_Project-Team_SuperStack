@@ -1,54 +1,45 @@
 import type { Rental } from "../../data/rentals";
 
+import "./rental.css"
 
-export function RentalPopulator (
-    {
-        rentalInventory,
-        updateSelected
-    }:
-    {
-        rentalInventory: Rental[],
-        updateSelected: React.Dispatch<React.SetStateAction<Inventory[]>>,
+export function RentalPopulator ({
+    r,
+    onClick,
+    message
     }
-) {
-    const filteredList: Rental[] = rentalInventory.filter((item) => item.isRented == false);
+    :
+    {
+    r: Rental[],
+    onClick: (sku: number) => void,
+    message: string
+    }) {
 
-    const handleButtonClick = (rentalClicked: Rental): void => {
-        updateSelected(oldSelectedState => {
-            // map the array to copy it, modifying if we need to
-            return oldSelectedState.map(t => {
-                /**
-                 * If our clicked ID matches the mapped term, we return
-                 * a destructuring of that object, but with the updated
-                 * "favourite" property value
-                 */
-                if(t.sku === rentalClicked.sku) {
-                    const newSelected = !t.rented.isSelected;
-                    return {...t, rented: { ...t.rented , isSelected: newSelected}};
-                } else {
-                    // if not, we just return the original object for mapping.
-                    return t;
-                }
-            })
-        });
-    };
+    const fr: Rental[] = r.filter((item) => item.isRented == false);
 
-    return (
-        <>
-        <section className="rentalPopulator">
-            <h2> Available Rentals</h2>
-            <div className="ParentList"> 
-                {filteredList.map((rental) => 
-                <div className="ChildItem" key={rental.sku}>
-                    <img className="ChildIMG" src={rental?.Image.src} alt={rental.Image.alt ?? rental.name} />
-                    <p className="ChildContent"> {rental.name}</p>
-                    <p className="ChildContent"> {rental.productType}</p> 
-                    <button onClick={() => {handleButtonClick(rental)}} >
-                        {rental.isSelected ? 'REMOVE' : 'ADD'}
-                    </button>
-                </div>)}
-            </div>
-        </section>
-        </>
-    )
+  return (
+    <div className="ChildContainer">
+      {fr.length === 0 ? (
+        <div>{message}</div>
+      ) : (
+        fr.map((selectedRental) => (
+          <div className="ChildItem" key={selectedRental.sku}>
+            <img
+              className="ChildImage"
+              src={selectedRental.Image.src}
+              alt={selectedRental.Image.alt ?? selectedRental.name}
+            />
+            <p className="ChildContent">{selectedRental.name}</p>
+            <p className="ChildContent">{selectedRental.productType}</p>
+            <button
+              className="ChildButton"
+              type="button"
+              onClick={() => onClick(selectedRental.sku)}
+            >
+              {selectedRental.isSelected === true ? 'REMOVE' : 'ADD'}
+            </button>
+          </div>
+        ))
+      )}
+    </div>
+  );
 }

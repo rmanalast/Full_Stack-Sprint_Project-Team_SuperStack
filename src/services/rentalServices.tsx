@@ -3,23 +3,6 @@
 import type { Rental } from '../data/rentals';
 import * as REPO from '../repository/rentalInventory'
 
-export function changeStatus(sku: number): Rental {
-    try {
-        const r: Rental = REPO.getItemByID(sku)
-
-        if (!r) {
-            throw Error(`Item with SKU ${sku} not found`)
-        }
-        else {
-            r.isRented = !r.isRented;
-        }
-        return r;
-    }
-    catch(e) {
-        throw Error(`An Error Occured: ${e}`)
-    }
-};
-
 export function getRentals(): Rental[] {
     try {
         const r: Rental[] = REPO.getItems()
@@ -37,19 +20,14 @@ export function getRentals(): Rental[] {
     }
 };
 
-export function changeSelected(sku: number): Rental {
-    try {
-        const r: Rental = REPO.getItemByID(sku)
+export async function toggleIsRented(sku: number) {
+        const t: Rental = await REPO.getItemByID(sku);
 
-        if (!r) {
-            throw Error(`Item with SKU : ${sku}`)
-        }
-        else {
-            r.isSelected = !r.isSelected
-        }
-        return r;
-    }
-    catch(e) {
-        throw Error(`An Error Occured: ${e}`)
-    }
+        await REPO.toggleRented(t.sku);
+};
+
+export async function toggleIsSelected(sku: number) {
+        const t: Rental = await REPO.getItemByID(sku);
+
+        await REPO.toggleSelected(t.sku);
 };

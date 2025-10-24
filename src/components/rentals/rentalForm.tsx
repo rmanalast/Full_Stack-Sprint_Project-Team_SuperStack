@@ -1,72 +1,43 @@
-import Rental from "../../data/itemsList"
-import { RentalSelected } from "./rentalSelected"
-
 import "./rentalForm.css"
+import { type Rental } from "../../data/rentals";
+import { RentalPopulator } from "./rentalPopulator";
 
 
 export function RentalForm({
-        rentalInventory,
-        updateSelected,
-    }:
-    {
-        rentalInventory: Inventory[],
-        updateSelected: React.Dispatch<React.SetStateAction<Rental[]>>,
-    }
-) {
+    r,
+    onClick, //toggle isSelected
+    onSubmit //toggle isRented
+}
+:
+{
+    r: Rental[],
+    onClick: (sku: number) => void
+    onSubmit: (sku: number) => void
+}) {
+
+    const selected: Rental[] = r.filter((s) => s.isSelected == true && s.isRented == false)
 
     const handleSubmit = (e: React.FormEvent) => {
-
-        console.log("Submitted");
-
-    const updatedRentals = rentalInventory.map((rental) => {
-        const isSelected = selected.find(sel => sel.sku === rental.sku);
-            if (isSelected) {
-            return {
-                ...rental,
-                rented: { ...rental.rented, isRented: true}
-            };
-            }
-        return rental;
-    });
-
-    updateSelected(updatedRentals);
     e.preventDefault();
-    };
+    console.log("Submitted");
 
-
-    const handleButtonClick = (rentalClicked: Inventory): void => {
-        updateSelected(oldSelectedState => {
-            // map the array to copy it, modifying if we need to
-            return oldSelectedState.map(t => {
-                /**
-                 * If our clicked ID matches the mapped term, we return
-                 * a destructuring of that object, but with the updated
-                 * "favourite" property value
-                 */
-                if(t.sku === rentalClicked.sku) {
-                    const newSelected = !t.rented.isSelected;
-                    return {...t, rented: { ...t.rented , isSelected: newSelected}};
-                } else {
-                    // if not, we just return the original object for mapping.
-                    return t;
+        r.map((s) => {
+            const i = selected.find(sel => sel.sku === s.sku);
+                if (i) {
+                onSubmit(i.sku)
+                };
                 }
-            })
-        });
-    };
-
-    const selected: Inventory[] = rentalInventory.filter((rentals) => rentals.rented.isSelected == true && rentals.rented.isRented == false)
+            )
+        };
 
     return (
         <section className="rentals-page">
             <form onSubmit={handleSubmit}>
                 <h2>Rental Sign Out Form</h2>
-                <div className="FormPage">
-                    {selected.map((rental) => 
-                        <div className="rentalsChild"key={rental.sku}>
-                            <RentalSelected selectedRental={rental} onClick={() => {handleButtonClick(rental)}} ></RentalSelected>
-                        </div>
-                    )}
-
+                <div>
+                    <RentalPopulator message={"No Rentals Selected"}r={selected}onClick={
+                    async (id: number) => {
+                                await onClick(id);}}></RentalPopulator>
                     </div>
                     <label htmlFor="selector">Select Length of Time</label>
                     <select className="periodRental" id="selector">
@@ -75,12 +46,29 @@ export function RentalForm({
                         <option>14 days</option>
                         <option>30 days</option>
                     </select>
+                    {/* {selectError && (
+                        <div id="select-error" style={{ color: "crimson", marginTop: 4 }}>
+                            {selectError}
+                        </div>
+                    )} */}
 
                     <label htmlFor="name">Enter your name</label>
                     <input className="rentalInput"type="text" id="name"required={true}></input>
+                    {/* {nameError && (
+                        <div id="name-error" style={{ color: "crimson", marginTop: 4 }}>
+                            {nameError}
+                        </div>
+                    )} */}
+                    
 
                     <label htmlFor="email">Enter your email</label>
                     <input className="rentalInput"type="email" id="email"required={true}></input>
+                    {/* {emailError && (
+                        <div id="name-error" style={{ color: "crimson", marginTop: 4 }}>
+                            {emailError}
+                        </div>
+                    )} */}
+
                     <button className="rentalButton"type="submit" onSubmit={handleSubmit}>submit</button>
             </form>
         </section>
