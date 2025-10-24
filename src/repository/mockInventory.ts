@@ -1,9 +1,10 @@
+import type { Inventory } from '../types/inventoryType';
 /**
  * File: mockInventory.ts
  * Initialize inventory list as custom type array.
  * 
  */
-import type { Inventory } from '../types/inventoryType';
+
 
 
 export const InventoryList: Inventory[] = [
