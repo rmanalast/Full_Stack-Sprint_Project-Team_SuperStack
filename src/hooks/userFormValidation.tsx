@@ -1,6 +1,21 @@
 import { useState, useEffect } from 'react';
 import * as services from '../services/formValidation';
 
+/**
+ * Custom hook for reusable form validation and input handling logic.
+ *
+ * @param {object} initialValues - Default form field values.
+ * @returns {object} - Contains:
+ *   - values: current field values
+ *   - errors: current validation errors
+ *   - isSubmitting: submission state
+ *   - handleChange: updates values and validates fields on change
+ *   - handleSubmit: processes form submission with validation
+ *   - validateAllFields: validates all fields before submission
+ *   - resetForm: clears form values and errors
+ *   - setValues: manually set form state
+ */
+
 type FormValues = { [key: string]: string };
 type FormErrors = { [key: string]: string };
 
@@ -39,6 +54,23 @@ export function useFormValidation(initialValues: FormValues = {}) {
     setIsSubmitting(false);
   };
 
+  // Validate all fields manually (for use in WishlistForm)
+  const validateAllFields = (): boolean => {
+    const newErrors: FormErrors = {};
+    Object.keys(values).forEach((key) => {
+      const error = services.validateField(key, values[key]);
+      if (error) newErrors[key] = error;
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Reset form values and errors
+  const resetForm = () => {
+    setValues(initialValues);
+    setErrors({});
+  };
+
   // Log errors for debugging
   useEffect(() => {
     if (Object.keys(errors).length > 0) {
@@ -52,6 +84,8 @@ export function useFormValidation(initialValues: FormValues = {}) {
     isSubmitting,
     handleChange,
     handleSubmit,
+    validateAllFields,
+    resetForm,
     setValues,
   };
 }

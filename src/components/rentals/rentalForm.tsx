@@ -1,76 +1,104 @@
-import "./rentalForm.css"
+import "./rentalForm.css";
 import { type Rental } from "../../data/rentals";
 import { RentalPopulator } from "./rentalPopulator";
-
+import { useFormValidation } from "../../hooks/userFormValidation";
 
 export function RentalForm({
-    r,
-    onClick, //toggle isSelected
-    onSubmit //toggle isRented
-}
-:
-{
-    r: Rental[],
-    onClick: (sku: number) => void
-    onSubmit: (sku: number) => void
+  r,
+  onClick, // toggle isSelected
+  onSubmit, // toggle isRented
+}: {
+  r: Rental[];
+  onClick: (sku: number) => void;
+  onSubmit: (sku: number) => void;
 }) {
+  const selected: Rental[] = r.filter(
+    (s) => s.isSelected === true && s.isRented === false
+  );
 
-    const selected: Rental[] = r.filter((s) => s.isSelected == true && s.isRented == false)
+  // Use form validation for name and email
+  const { values, errors, handleChange, validateAllFields, resetForm } =
+    useFormValidation({
+      name: "",
+      email: "",
+    });
 
-    const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitted");
 
-        r.map((s) => {
-            const i = selected.find(sel => sel.sku === s.sku);
-                if (i) {
-                onSubmit(i.sku)
-                };
-                }
-            )
-        };
+    // Validate name and email
+    const hasErrors = validateAllFields();
+    if (hasErrors) {
+      alert("Please fix the errors before submitting.");
+      return;
+    }
 
-    return (
-        <section className="rentals-page">
-            <form onSubmit={handleSubmit}>
-                <h2>Rental Sign Out Form</h2>
-                <div>
-                    <RentalPopulator message={"No Rentals Selected"}r={selected}onClick={
-                    async (id: number) => {
-                                await onClick(id);}}></RentalPopulator>
-                    </div>
-                    <label htmlFor="selector">Select Length of Time</label>
-                    <select className="periodRental" id="selector">
-                        <option value="" hidden> -- Select an option -- </option>
-                        <option>7 days</option>
-                        <option>14 days</option>
-                        <option>30 days</option>
-                    </select>
-                    {/* {selectError && (
-                        <div id="select-error" style={{ color: "crimson", marginTop: 4 }}>
-                            {selectError}
-                        </div>
-                    )} */}
+    console.log("Submitted:", values);
 
-                    <label htmlFor="name">Enter your name</label>
-                    <input className="rentalInput"type="text" id="name"required={true}></input>
-                    {/* {nameError && (
-                        <div id="name-error" style={{ color: "crimson", marginTop: 4 }}>
-                            {nameError}
-                        </div>
-                    )} */}
-                    
+    // Call onSubmit for each selected rental
+    r.map((s) => {
+      const i = selected.find((sel) => sel.sku === s.sku);
+      if (i) {
+        onSubmit(i.sku);
+      }
+    });
 
-                    <label htmlFor="email">Enter your email</label>
-                    <input className="rentalInput"type="email" id="email"required={true}></input>
-                    {/* {emailError && (
-                        <div id="name-error" style={{ color: "crimson", marginTop: 4 }}>
-                            {emailError}
-                        </div>
-                    )} */}
+    resetForm();
+  };
 
-                    <button className="rentalButton"type="submit" onSubmit={handleSubmit}>submit</button>
-            </form>
-        </section>
-    )
-};
+  return (
+    <section className="rentals-page">
+      <form onSubmit={handleSubmitForm}>
+        <h2>Rental Sign Out Form</h2>
+        <div>
+          <RentalPopulator
+            message={"No Rentals Selected"}
+            r={selected}
+            onClick={async (id: number) => {
+              await onClick(id);
+            }}
+          ></RentalPopulator>
+        </div>
+
+        <label htmlFor="selector">Select Length of Time</label>
+        <select className="periodRental" id="selector">
+          <option value="" hidden>
+            {" "}
+            -- Select an option --{" "}
+          </option>
+          <option>7 days</option>
+          <option>14 days</option>
+          <option>30 days</option>
+        </select>
+
+        <label htmlFor="name">Enter your name</label>
+        <input
+          className="rentalInput"
+          type="text"
+          id="name"
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+          required
+        />
+        {errors.name && <span className="error">{errors.name}</span>}
+
+        <label htmlFor="email">Enter your email</label>
+        <input
+          className="rentalInput"
+          type="email"
+          id="email"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+          required
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+
+        <button className="rentalButton" type="submit">
+          submit
+        </button>
+      </form>
+    </section>
+  );
+}

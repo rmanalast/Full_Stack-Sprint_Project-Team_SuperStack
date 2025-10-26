@@ -1,24 +1,36 @@
-import { useState } from "react";
+import React from "react";
+import { useFormValidation } from "../../../hooks/userFormValidation";
 
-// Props for the WishListForm component
 type WishListFormProps = {
   notifications: string[];
   setNotifications: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
-function WishListForm({ notifications, setNotifications }: WishListFormProps) {
-  // Local state for the form input
-  const [email, setEmail] = useState("");
+const WishListForm: React.FC<WishListFormProps> = ({
+  notifications,
+  setNotifications,
+}) => {
+  // Use the custom validation hook
+  const {
+    values,
+    errors,
+    handleChange,
+    validateAllFields,
+    resetForm,
+  } = useFormValidation({
+    email: "",
+  });
 
-  // Handler for form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const hasErrors = validateAllFields();
 
-    // Basic validation: check if email is not empty and has an @
-    if (email.trim() === "" || !email.includes("@")) {
-      alert("Please enter a valid email address.");
+    if (hasErrors) {
+      alert("Please fix the errors before submitting.");
       return;
     }
+
+    const email = values.email.trim();
 
     // Prevent duplicates
     if (notifications.includes(email)) {
@@ -28,25 +40,29 @@ function WishListForm({ notifications, setNotifications }: WishListFormProps) {
 
     // Update parent state with new email
     setNotifications([...notifications, email]);
-
-    // Clear the input field
-    setEmail("");
+    alert("You’ve successfully signed up for notifications!");
+    resetForm();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="wishlist-form">
+      <h2>Wish List Notifications</h2>
+
       <label>
-        Enter your email to sign up for notifications:
+        Enter your email:
         <input
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          value={values.email}
+          onChange={handleChange}
           placeholder="you@example.com"
         />
+        {errors.email && <span className="error">{errors.email}</span>}
       </label>
+
       <button type="submit">Sign Up</button>
     </form>
   );
-}
+};
 
 export default WishListForm;
