@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { Inventory } from '../../data/itemsList';
 import { useClearCart } from "../../hooks/emptyCartCache";
+import { SingleSearch } from '../common/singleSearch';
+
 
 
 
@@ -30,6 +32,8 @@ export function AddCart() {
   return (
     <>
       <h2>Your Cart</h2>
+      <SingleSearch />
+
       <h3> Click Here to Clear Cart Cache.</h3>
       <button onClick={clearCart}>Clear Cache</button>
       

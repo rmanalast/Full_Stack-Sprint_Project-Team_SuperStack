@@ -5,6 +5,7 @@ import PreOrderForm from "../PreOrderForm/pre-order-form";
 import type { Inventory } from "../../data/itemsList";
 import { useInventory } from "../../hooks/inventoryHook";
 import { useClearCart } from "../../hooks/emptyCartCache";
+import { SingleSearch } from "../common/singleSearch";
 
 
 // Import Swiper styles
@@ -58,6 +59,8 @@ export function Landing(
 
     
       <PreOrderForm />
+      < SingleSearch/>
+      <br/>
       <h3>Click Here TO Clear Your Cart Cache.</h3>
       <button onClick={clearCart}>Clear Cache</button>
       <ul>

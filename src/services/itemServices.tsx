@@ -1,38 +1,21 @@
-import type { Inventory } from "../data/itemsList";
-import * as REPO from "../repository/storeInventory";
+import { getItemBySku } from "../repository/inventoryRepo";
+import type { Inventory } from "../types/inventoryType";
+/**
+ * This service seraches,casts to number,validates  and returns item by sku.
+ * 
+ */
 
-
-// SERVICES
-export function changeWishlist(sku: number): Inventory {
-    try {
-        const r = REPO.getItemByID(sku);
-
-        if (!r) {
-            throw Error(`Item with SKU ${sku} not found`)
-        }
-        else {
-            r.isWishListed = !r.isWishListed;
-        }
-        return r;
+export function findItemBySku(rawInput:string): Inventory | null {
+    const sku  = Number(rawInput);
+    if (!rawInput || isNaN(sku) || sku <=0){
+        console.warn(`'Invalid SKU input: "${rawInput}"`);
+        return null;
     }
-    catch(e) {
-        throw Error(`An Error Occured: ${e}`)
-    }
-};
+    try{
+        return getItemBySku(sku);      
+    } catch (error) {
+        console.warn(`Item with SKU ${sku} not found`);
+        return null;
 
-export function changeCart(sku: number): Inventory {
-    try {
-        const r = REPO.getItemByID(sku);
-
-        if (!r) {
-            throw Error(`Item with SKU ${sku} not found`)
-        }
-        else {
-            r.isInCart = !r.isInCart;
-        }
-        return r;
     }
-    catch(e) {
-        throw Error(`An Error Occured ${e}`)
-    }
-};
+}
