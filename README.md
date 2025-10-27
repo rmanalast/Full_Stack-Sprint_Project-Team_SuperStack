@@ -89,4 +89,28 @@ easier to comunicate with the public about their planned events.
 
 
 
+### Sprint 3️⃣:
 
+#### Raven 
+
+    > Validation Refactor -> Hooks, Services, Repository
+
+    > Validation Components 
+
+    > User Data (Component encountered a bug and wasn't implemented this sprint)
+
+#### Rylan 
+
+    > Rental Refactor -> Hooks, Services, Repository
+
+    > Rental Populator Refactor
+
+    > Rental Data
+
+#### Akeem 
+
+    > Inventory Refactor -> Hooks, Services, Repository
+
+    > Cart Refactor 
+
+    > Inventory Data 

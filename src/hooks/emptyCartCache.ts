@@ -1,7 +1,7 @@
 /*
 emptyCartCache.ts
 This hook will empty our "cart" on local storage. 
-To see visisble results, refrsh page and your cart list is empty.
+To see visisble results, refresh page and your cart list is empty.
 
 */
 

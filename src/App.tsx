@@ -28,7 +28,7 @@ function App() {
             <Route path="inventory" />
             <Route path="wishlist" element={<WishlistPage itemList={inventory} itemUpdater={updateInventory}/>}/>
             <Route path="rental" element={<Rentals/>}/>
-            <Route path="cart" element={<ContactForm cartItems={inventory} setCartItems={updateInventory}/>} />
+            <Route path="cart" element={<ContactForm/>} />
           </Route>
       </Routes>
   );
