@@ -4,8 +4,6 @@ import type { FormEvent } from 'react';
 import './cartStyles.css';
 import { AddCart } from './addDropCart';
 import './formStyles.css'
-import type { Inventory } from '../../data/itemsList';
-
 
 // Define a TypeScript type for the contact form data
 type Contact = {
@@ -16,12 +14,9 @@ type Contact = {
     cve:string;
 };
 
-type ContactFormProps = {
-  cartItems: Inventory[];
-  setCartItems: React.Dispatch<React.SetStateAction<Inventory[]>>;
-};
+
 // Define the ContactForm component
-export function ContactForm({ cartItems, setCartItems }: ContactFormProps){
+export function ContactForm(){
 
     const [contact, setContact] = useState<Contact>({
         name:"",
@@ -77,7 +72,7 @@ export function ContactForm({ cartItems, setCartItems }: ContactFormProps){
                 Status: {isPaid ? <strong>Payment Complete</strong> : <em>Not Paid For</em>}
             </div>
 
-            <AddCart cartItems={cartItems} setCartItems={setCartItems} />
+            <AddCart  />
                     
         </section>
 
