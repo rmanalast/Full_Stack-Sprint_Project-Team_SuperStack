@@ -1,17 +1,11 @@
-export type Inventory = {
-    sku: number,
-    name: string,
-    description: string,
-    price: number,
-    productType: string,
-    Image: {
-        src: string,
-        alt: string
-    };
-    isOnSale: boolean,
-    isInCart: boolean,
-    isWishListed: boolean
-};
+import type { Inventory } from '../types/inventoryType';
+/**
+ * File: mockInventory.ts
+ * Initialize inventory list as custom type array.
+ * 
+ */
+
+
 
 export const InventoryList: Inventory[] = [
     // 10 Video Games
@@ -238,5 +232,3 @@ export const InventoryList: Inventory[] = [
         isWishListed: false
     }
 ];
-
-export default InventoryList;

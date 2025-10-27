@@ -10,9 +10,11 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 
+
 function App() {
   const [inventory, updateInventory] = useState(InventoryList);
   return (
+
       <Routes>
           {/* The root path renders <Layout>. That component contains an <Outlet>
           which will render the elements of their child routes. */}
@@ -25,8 +27,8 @@ function App() {
             <Route index element={<Landing itemList={inventory} itemUpdater={updateInventory} />} />
             <Route path="inventory" />
             <Route path="wishlist" element={<WishlistPage itemList={inventory} itemUpdater={updateInventory}/>}/>
-            <Route path="rental" element={<Rentals RentalList={inventory}  setRental={updateInventory}/>}/>
-            <Route path="cart" element={<ContactForm cartItems={inventory} setCartItems={updateInventory}/>} />
+            <Route path="rental" element={<Rentals/>}/>
+            <Route path="cart" element={<ContactForm/>} />
           </Route>
       </Routes>
   );

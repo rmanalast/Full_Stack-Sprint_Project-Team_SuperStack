@@ -1,5 +1,5 @@
 import { useState } from "react";
-import WishListForm from "../../forms/WishlistForm/wishListForm";
+import WishListForm from "../../components/forms/WishListForm/WishListForm";
 import BoxItems from "../../components/common/item_populator/item_populator"
 import type { Inventory } from "../../data/itemsList";
 import "./WishlistPage.css";

@@ -1,88 +1,102 @@
-import type { Inventory } from "../../data/itemsList"
-import { RentalSelected } from "./rentalSelected"
-
-import "./rentalForm.css"
-
+import "./rentalForm.css";
+import { type Rental } from "../../data/rentals";
+import { RentalPopulator } from "./rentalPopulator";
+import { useFormValidation } from "../../hooks/userFormValidation";
 
 export function RentalForm({
-        rentalInventory,
-        updateSelected,
-    }:
-    {
-        rentalInventory: Inventory[],
-        updateSelected: React.Dispatch<React.SetStateAction<Inventory[]>>,
-    }
-) {
+  r,
+  onClick, // toggle isSelected
+  onSubmit, // toggle isRented
+}: {
+  r: Rental[];
+  onClick: (sku: number) => void;
+  onSubmit: (sku: number) => void;
+}) {
+  const selected: Rental[] = r.filter(
+    (s) => s.isSelected === true && s.isRented === false
+  );
 
-    const handleSubmit = (e: React.FormEvent) => {
-
-        console.log("Submitted");
-
-    const updatedRentals = rentalInventory.map((rental) => {
-        const isSelected = selected.find(sel => sel.sku === rental.sku);
-            if (isSelected) {
-            return {
-                ...rental,
-                rented: { ...rental.rented, isRented: true}
-            };
-            }
-        return rental;
+  // Use form validation for name and email
+  const { values, errors, handleChange, validateAllFields, resetForm } =
+    useFormValidation({
+      name: "",
+      email: "",
     });
 
-    updateSelected(updatedRentals);
+  const handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    };
 
+    // Validate name and email
+    const valid = validateAllFields();
+    if (!valid) {
+      alert("Please fix the errors before submitting.");
+      return;
+    }
 
-    const handleButtonClick = (rentalClicked: Inventory): void => {
-        updateSelected(oldSelectedState => {
-            // map the array to copy it, modifying if we need to
-            return oldSelectedState.map(t => {
-                /**
-                 * If our clicked ID matches the mapped term, we return
-                 * a destructuring of that object, but with the updated
-                 * "favourite" property value
-                 */
-                if(t.sku === rentalClicked.sku) {
-                    const newSelected = !t.rented.isSelected;
-                    return {...t, rented: { ...t.rented , isSelected: newSelected}};
-                } else {
-                    // if not, we just return the original object for mapping.
-                    return t;
-                }
-            })
-        });
-    };
+    console.log("Submitted:", values);
 
-    const selected: Inventory[] = rentalInventory.filter((rentals) => rentals.rented.isSelected == true && rentals.rented.isRented == false)
+    // Call onSubmit for each selected rental
+    r.map((s) => {
+      const i = selected.find((sel) => sel.sku === s.sku);
+      if (i) {
+        onSubmit(i.sku);
+      }
+    });
 
-    return (
-        <section className="rentals-page">
-            <form onSubmit={handleSubmit}>
-                <h2>Rental Sign Out Form</h2>
-                <div className="FormPage">
-                    {selected.map((rental) => 
-                        <div className="rentalsChild"key={rental.sku}>
-                            <RentalSelected selectedRental={rental} onClick={() => {handleButtonClick(rental)}} ></RentalSelected>
-                        </div>
-                    )}
+    resetForm();
+  };
 
-                    </div>
-                    <label htmlFor="selector">Select Length of Time</label>
-                    <select className="periodRental" id="selector">
-                        <option value="" hidden> -- Select an option -- </option>
-                        <option>7 days</option>
-                        <option>14 days</option>
-                        <option>30 days</option>
-                    </select>
+  return (
+    <section className="rentals-page">
+      <form onSubmit={handleSubmitForm}>
+        <h2>Rental Sign Out Form</h2>
+        <div>
+          <RentalPopulator
+            message={"No Rentals Selected"}
+            r={selected}
+            onClick={async (id: number) => {
+              await onClick(id);
+            }}
+          ></RentalPopulator>
+        </div>
 
-                    <label htmlFor="name">Enter your name</label>
-                    <input className="rentalInput"type="text" id="name"required={true}></input>
+        <label htmlFor="selector">Select Length of Time</label>
+        <select className="periodRental" id="selector">
+          <option value="" hidden>
+            {" "}
+            -- Select an option --{" "}
+          </option>
+          <option>7 days</option>
+          <option>14 days</option>
+          <option>30 days</option>
+        </select>
 
-                    <label htmlFor="email">Enter your email</label>
-                    <input className="rentalInput"type="email" id="email"required={true}></input>
-                    <button className="rentalButton"type="submit" onSubmit={handleSubmit}>submit</button>
-            </form>
-        </section>
-    )
-};
+        <label htmlFor="name">Enter your name</label>
+        <input
+          className="rentalInput"
+          type="text"
+          id="name"
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+        />
+        {errors.name && <span className="error">{errors.name}</span>}
+
+        <label htmlFor="email">Enter your email</label>
+        <input
+          className="rentalInput"
+          type="email"
+          id="email"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+
+        <button className="rentalButton" type="submit">
+          submit
+        </button>
+      </form>
+    </section>
+  );
+}
