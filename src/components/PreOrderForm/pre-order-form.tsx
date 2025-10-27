@@ -1,64 +1,78 @@
-import React, { useState } from 'react';
+import React from "react";
 import "./pre-order-form.css";
+import { useFormValidation } from "../../hooks/userFormValidation";
 
 const PreOrderForm = () => {
-  const [formData, setFormData] = useState({
+  const {
+    values,
+    errors,
+    handleChange,
+    validateAllFields,
+    resetForm,
+  } = useFormValidation({
     name: "",
     category: "",
     title: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Pre-Order Form submitted:", formData);
-    alert("Pre-Order Form submitted! (mock only for Sprint 1)");
+    const valid = validateAllFields();
+
+    if (!valid) {
+      alert("Please fix the errors before submitting.");
+      return;
+    }
+
+    console.log("Pre-Order Form submitted:", values);
+    alert("Pre-Order Form submitted successfully!");
+    resetForm();
   };
 
   return (
     <section className="pre-order-form">
       <h2>Pre-Order Form</h2>
       <form onSubmit={handleSubmit}>
+        {/* Name */}
         <label>
           Name:
           <input
             type="text"
             name="name"
-            value={formData.name}
+            value={values.name}
             onChange={handleChange}
-            required
           />
+          {errors.name && <span className="error">{errors.name}</span>}
         </label>
 
+        {/* Category */}
         <label>
           Category:
           <select
             name="category"
-            value={formData.category}
-            onChange={handleChange}
-            required
+            value={values.category}
+            onChange={(e) =>
+              handleChange(e as unknown as React.ChangeEvent<HTMLInputElement>)
+            }
           >
             <option value="">-- Select Category --</option>
             <option value="Game">Game</option>
             <option value="Movie">Movie</option>
           </select>
+          {errors.category && <span className="error">{errors.category}</span>}
         </label>
 
-        {/* Conditionally show title input */}
-        {formData.category && (
+        {/* Title (conditional) */}
+        {values.category && (
           <label>
-            {formData.category} Title:
+            {values.category} Title:
             <input
               type="text"
               name="title"
-              value={formData.title}
+              value={values.title}
               onChange={handleChange}
-              required
             />
+            {errors.title && <span className="error">{errors.title}</span>}
           </label>
         )}
 

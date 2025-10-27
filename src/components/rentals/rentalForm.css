@@ -15,6 +15,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
+    align-self: center;
+    justify-self: center;
 }
 
 /* Right: Form */
@@ -62,8 +64,9 @@ label {
     background-color: #333;
 }
 
-.rentalsChild {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+div.ChildContainer {
+    display: flex;
+    flex-direction: row;
     gap: 20px;
+    flex-wrap: wrap;
 }

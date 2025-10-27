@@ -57,9 +57,14 @@ function box_items(
                     onClick={() => handleToggleWishlist(item)}
                     >
                     {allowRemove
-                        ? (item.isWishListed ? "Remove from Wishlist" : "Add to Wishlist")
+                        ? (item.isWishListed === true ? "Remove from Wishlist" : "Add to Wishlist")
                         : "Add to Wishlist"}
                     </button>
+                    {/* <button
+                    className="cart-button"
+                    onClick={() => }
+                    >
+                    </button> */}
                 </div>)}
             </div>
         </section>
