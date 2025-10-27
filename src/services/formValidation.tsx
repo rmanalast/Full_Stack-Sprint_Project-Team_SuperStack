@@ -1,7 +1,7 @@
 // FORM VALIDATIONS
 
 // Validate a single field by name
-export function validateField(name: string, value: string, password?: string): string {
+export function validateField(name: string, value: string, password?: string): string | null {
   switch (name) {
     case 'username':
       return validateUsername(value);
@@ -14,37 +14,37 @@ export function validateField(name: string, value: string, password?: string): s
     case 'dropdown':
       return validateDropdown(value);
     default:
-      return '';
+      return null;
   }
 }
 
 // Individual validation rules
-function validateUsername(username: string): string {
+function validateUsername(username: string): string | null {
   if (!username.trim()) return 'Username is required';
   if (username.length < 10) return 'Username must be at least 10 characters';
-  return '';
+  return null
 }
 
-function validateEmail(email: string): string {
+function validateEmail(email: string): string | null {
    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email.trim()) return 'Email is required';
-  if (!emailRegex.test(email)) return 'Invalid email address';
-  return '';
+  if (!emailRegex.test(email.trim())) return 'Invalid email address';
+  return null;
 }
 
-function validatePassword(password: string): string {
+function validatePassword(password: string): string | null {
   if (!password.trim()) return 'Password is required';
   if (password.length < 10) return 'Password must be at least 10 characters';
-  return '';
+  return null;
 }
 
-function validateConfirmPassword(password: string, confirmPassword: string): string {
+function validateConfirmPassword(password: string, confirmPassword: string): string | null {
   if (!confirmPassword.trim()) return 'Confirm Password is required';
   if (password !== confirmPassword) return 'Passwords do not match';
-  return '';
+  return null;
 }
 
-function validateDropdown(value: string): string {
+function validateDropdown(value: string): string | null {
   if (!value.trim()) return 'Please select an option';
-  return '';
+  return null;
 }

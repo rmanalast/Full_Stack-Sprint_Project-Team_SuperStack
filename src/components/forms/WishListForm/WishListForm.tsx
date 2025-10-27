@@ -25,7 +25,7 @@ const WishListForm: React.FC<WishListFormProps> = ({
     e.preventDefault();
     const hasErrors = validateAllFields();
 
-    if (hasErrors) {
+    if (!hasErrors) {
       alert("Please fix the errors before submitting.");
       return;
     }

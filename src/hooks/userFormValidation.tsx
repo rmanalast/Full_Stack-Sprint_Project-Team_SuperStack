@@ -17,7 +17,7 @@ import * as services from '../services/formValidation';
  */
 
 type FormValues = { [key: string]: string };
-type FormErrors = { [key: string]: string };
+type FormErrors = { [key: string]: string | null};
 
 export function useFormValidation(initialValues: FormValues = {}) {
   const [values, setValues] = useState<FormValues>(initialValues);
@@ -31,23 +31,37 @@ export function useFormValidation(initialValues: FormValues = {}) {
 
     // Validate immediately on change
     const error = services.validateField(name, value);
-    setErrors((prev) => ({ ...prev, [name]: error }));
+
+    if (error) {
+    setErrors((prev) => ({ ...prev, [name]: error }));}
+
+    else {
+      setErrors((prev) => {
+        // delete error from list if exists
+        const o = {...prev};
+        delete o[name];
+        console.log(`error ${name} with value ${o[name]} resolved`)
+        return o;
+      })
+    }
   };
 
   // Handle form submission
   const handleSubmit = (callback: () => void) => (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setErrors({})
 
     const newErrors: FormErrors = {};
     Object.keys(values).forEach((key) => {
       const error = services.validateField(key, values[key]);
       if (error) newErrors[key] = error;
-    });
+    },
+  );
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
+      setIsSubmitting(true);
       callback(); // run custom submit logic if valid
     }
 
@@ -73,9 +87,7 @@ export function useFormValidation(initialValues: FormValues = {}) {
 
   // Log errors for debugging
   useEffect(() => {
-    if (Object.keys(errors).length > 0) {
-      console.log('Validation errors:', errors);
-    }
+      console.log('Validation errors:', errors)
   }, [errors]);
 
   return {

@@ -17,9 +17,9 @@ const PreOrderForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const hasErrors = validateAllFields();
+    const valid = validateAllFields();
 
-    if (hasErrors) {
+    if (!valid) {
       alert("Please fix the errors before submitting.");
       return;
     }

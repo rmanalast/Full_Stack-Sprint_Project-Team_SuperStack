@@ -27,8 +27,8 @@ export function RentalForm({
     e.preventDefault();
 
     // Validate name and email
-    const hasErrors = validateAllFields();
-    if (hasErrors) {
+    const valid = validateAllFields();
+    if (!valid) {
       alert("Please fix the errors before submitting.");
       return;
     }
@@ -79,7 +79,6 @@ export function RentalForm({
           name="name"
           value={values.name}
           onChange={handleChange}
-          required
         />
         {errors.name && <span className="error">{errors.name}</span>}
 
@@ -91,7 +90,6 @@ export function RentalForm({
           name="email"
           value={values.email}
           onChange={handleChange}
-          required
         />
         {errors.email && <span className="error">{errors.email}</span>}
 
