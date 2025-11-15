@@ -1,11 +1,11 @@
 import "./landing.css";
-import SlideShow from "../common/swiper/swiper";
-import BoxItems from "../common/item_populator/item_populator";
-import PreOrderForm from "../PreOrderForm/pre-order-form";
-import type { Inventory } from "../../data/itemsList";
-import { useInventory } from "../../hooks/inventoryHook";
-import { useClearCart } from "../../hooks/emptyCartCache";
-import { SingleSearch } from "../common/singleSearch";
+import SlideShow from "../../common/swiper/swiper";
+import BoxItems from "../../common/item_populator/item_populator";
+import PreOrderForm from "../../common/PreOrderForm/pre-order-form";
+import type { Inventory } from "../../../data/itemsList";
+import { useInventory } from "../../../hooks/inventoryHook";
+import { useClearCart } from "../../../hooks/emptyCartCache";
+import { SingleSearch } from "../../common/singleSearch";
 
 
 // Import Swiper styles

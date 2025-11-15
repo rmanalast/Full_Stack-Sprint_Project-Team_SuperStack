@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Nav  from "../../Nav/nav";
-import Footer from "../../Footers/footer";
+import Nav  from "./Nav/nav";
+import Footer from "./Footers/footer";
 
 /**
  * This renders the general page structure -- the nav, footer, and the Outlet (page) within.

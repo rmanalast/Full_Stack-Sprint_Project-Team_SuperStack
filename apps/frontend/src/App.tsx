@@ -1,11 +1,11 @@
 //Ap.tsx
-import Landing  from "./components/landing/landing";
+import Landing  from "./components/pages/landing/landing";
 import "./App.css";
-import { Layout } from "./components/common/layout/layout";
-import WishlistPage from "./pages/WishlistPage/WishlistPage.tsx";
+import { Layout } from "./components/layout/layout";
+import WishlistPage from "./components/pages/WishlistPage/WishlistPage.tsx";
 import InventoryList from "./data/itemsList.js";
-import {Rentals} from "./pages/Rental.js";
-import { ContactForm } from "./components/cart/CartForm";
+import {Rentals} from "./components/pages/rentalPage/Rental.js";
+import { ContactForm } from "./components/common/cart/CartForm";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 

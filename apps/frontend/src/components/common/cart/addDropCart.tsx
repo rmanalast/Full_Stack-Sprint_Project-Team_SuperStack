@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import type { Inventory } from '../../data/itemsList';
-import { useClearCart } from "../../hooks/emptyCartCache";
-import { SingleSearch } from '../common/singleSearch';
+import type { Inventory } from '../../../data/itemsList';
+import { useClearCart } from "../../../hooks/emptyCartCache";
+import { SingleSearch } from '../../common/singleSearch';
 
 
 

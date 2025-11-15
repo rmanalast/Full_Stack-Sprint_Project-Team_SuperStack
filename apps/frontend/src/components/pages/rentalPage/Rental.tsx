@@ -1,6 +1,6 @@
-import {RentalForm} from "../components/rentals/rentalForm"
-import {RentalPopulator} from "../components/rentals/rentalPopulator"
-import { useRental } from "../hooks/useRental"
+import {RentalForm} from "../../common/rentals/rentalForm"
+import {RentalPopulator} from "../../common/rentals/rentalPopulator"
+import { useRental } from "../../../hooks/useRental"
 
 // Rentals page to populate available rentals and add them to cart. anything with rentalCart true
 export function Rentals() {

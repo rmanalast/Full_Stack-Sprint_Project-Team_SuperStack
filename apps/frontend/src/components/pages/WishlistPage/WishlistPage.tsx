@@ -1,7 +1,7 @@
 import { useState } from "react";
-import WishListForm from "../../components/forms/WishListForm/WishListForm";
-import BoxItems from "../../components/common/item_populator/item_populator"
-import type { Inventory } from "../../data/itemsList";
+import WishListForm from "../../common/forms/WishListForm/WishListForm";
+import BoxItems from "../../common/item_populator/item_populator"
+import type { Inventory } from "../../../data/itemsList";
 import "./WishlistPage.css";
 
 /* This is the wishlist page where users can view and manage their saved notification emails. */

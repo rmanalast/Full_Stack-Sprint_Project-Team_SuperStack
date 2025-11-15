@@ -1,4 +1,4 @@
-import type { Rental } from "../../data/rentals";
+import type { Rental } from "../../../data/rentals";
 
 import "./rental.css"
 

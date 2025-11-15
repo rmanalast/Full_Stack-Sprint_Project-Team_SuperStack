@@ -1,7 +1,7 @@
 import "./rentalForm.css";
-import { type Rental } from "../../data/rentals";
+import { type Rental } from "../../../data/rentals";
 import { RentalPopulator } from "./rentalPopulator";
-import { useFormValidation } from "../../hooks/userFormValidation";
+import { useFormValidation } from "../../../hooks/userFormValidation";
 
 export function RentalForm({
   r,

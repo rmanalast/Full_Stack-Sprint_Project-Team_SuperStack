@@ -5,7 +5,7 @@ Renders all Inventory related lists.
 Title and list data are passed to as props, then render on landing page.
 */ 
 
-import InventoryList, { type Inventory } from '../../data/itemsList';
+import InventoryList, { type Inventory } from '../../../data/itemsList';
 import '../cart/cartStyles.css'
 
 
