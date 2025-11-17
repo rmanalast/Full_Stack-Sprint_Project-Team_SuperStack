@@ -7,6 +7,8 @@ import corsOptions from "../config/cors";
 import setupSwagger from "../config/swagger";
 import errorHandler from "./api/v1/middleware/errorHandler";
 
+import { wishlistRoutes } from "./api/v1/routes/wishlistRoutes";
+
 // initialize express application
 const app: Express = express();
 
@@ -33,6 +35,9 @@ app.get("/",  (_req, res) => {
 
 // use termRoutes
 app.use("/api/v1"); // ADD ROUTES HERE
+
+// Wishlist routes
+app.use("/api/v1/wishlists", wishlistRoutes);
 
 //errorhandler catches errors as last element in middleware chain
 // occurs when "next" is invoked
