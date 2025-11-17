@@ -9,13 +9,13 @@ const prisma = new PrismaClient();
 async function main() {
 
     // insert terms to db
-    const createManyRentals = await prisma.rental.createManyAndReturn(
+    const createManyRentals = await prisma.rental.createMany(
         {
             data: RentalData,
             skipDuplicates: true
         }
     );
-    const createManyRetail = await prisma.retail.createManyAndReturn(
+    const createManyRetail = await prisma.retail.createMany(
         {
             data: RetailData,
             skipDuplicates: true
