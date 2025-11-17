@@ -1,22 +1,32 @@
 import prisma from "../../../../prisma/client";
 
 export const wishlistService = {
+
+  // Get all wishlists
+  async getAllWishlists() {
+    return prisma.wishList.findMany();
+  },
+  
+  // Get a wishlist by email
   async getWishlist(email: string) {
     return prisma.wishList.findUnique({
       where: { email },
     });
   },
 
-  async createWishlist(email: string, items: string[]) {
-    return prisma.wishList.create({
-      data: { email, items },
+  // Create a new wishlist or update an existing one based on email
+  async createOrUpdateWishlist(email: string) {
+    return prisma.wishList.upsert({
+      where: { email },
+      update: {},
+      create: { email },
     });
   },
 
-  async updateWishlist(email: string, items: string[]) {
-    return prisma.wishList.update({
+  // Remove a wishlist by email
+  async removeWishlist(email: string) {
+    return prisma.wishList.delete({
       where: { email },
-      data: { items },
     });
-  },
+  }
 };

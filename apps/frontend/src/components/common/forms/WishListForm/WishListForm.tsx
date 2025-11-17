@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormValidation } from "../../../../hooks/userFormValidation";
+import { wishlistRepo } from "../../../../repository/wishlistRepo";
 
 type WishListFormProps = {
   notifications: string[];
@@ -10,7 +11,6 @@ const WishListForm: React.FC<WishListFormProps> = ({
   notifications,
   setNotifications,
 }) => {
-  // Use the custom validation hook
   const {
     values,
     errors,
@@ -21,27 +21,29 @@ const WishListForm: React.FC<WishListFormProps> = ({
     email: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const hasErrors = validateAllFields();
 
-    if (!hasErrors) {
+    const valid = validateAllFields();
+    if (!valid) {
       alert("Please fix the errors before submitting.");
       return;
     }
 
     const email = values.email.trim();
 
-    // Prevent duplicates
-    if (notifications.includes(email)) {
-      alert("This email is already signed up for notifications.");
-      return;
-    }
+    try {
+      const savedEntry = await wishlistRepo.addEmail(email);
 
-    // Update parent state with new email
-    setNotifications([...notifications, email]);
-    alert("You’ve successfully signed up for notifications!");
-    resetForm();
+      setNotifications([...notifications, savedEntry.email]);
+
+      alert("You've successfully signed up for notifications!");
+
+      resetForm();
+    } catch (error) {
+      console.error(error);
+      alert("Error saving email. Please try again.");
+    }
   };
 
   return (

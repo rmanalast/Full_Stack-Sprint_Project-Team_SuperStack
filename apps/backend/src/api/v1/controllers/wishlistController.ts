@@ -2,6 +2,18 @@ import { Request, Response } from "express";
 import { wishlistService } from "../services/wishlistService";
 
 export const wishlistController = {
+
+  // Get all wishlists
+  async getAllWishlists(_req: Request, res: Response) {
+  try {
+    const data = await wishlistService.getAllWishlists();
+    res.status(200).json(data);
+  } catch (error) {
+      res.status(500).json({ error: "Failed to fetch wishlists." });
+    }
+  },
+
+  // Get a wishlist by email
   async getWishlist(req: Request, res: Response) {
     const email = req.params.email;
     const result = await wishlistService.getWishlist(email);
@@ -10,21 +22,20 @@ export const wishlistController = {
     return res.json(result);
   },
 
+  // Create or update a wishlist
   async createOrUpdateWishlist(req: Request, res: Response) {
-    const { email, items } = req.body;
+    try {
+      const { email } = req.body;
 
-    // check if a wishlist already exists, then update or create accordingly
-    const existing = await wishlistService.getWishlist(email);
-    let updated;
-    if (existing) {
-      updated = await wishlistService.updateWishlist(email, items);
-    } else {
-      updated = await wishlistService.createWishlist(email, items);
+      const entry = await wishlistService.createOrUpdateWishlist(email);
+
+      res.status(201).json(entry);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to save wishlist" });
     }
-
-    return res.json(updated);
   },
 
+  // Remove a wishlist by email
   async removeWishlist(req: Request, res: Response) {
     const email = req.params.email;
     await wishlistService.getWishlist(email);

@@ -4,6 +4,9 @@ import { validateWishlist } from "../validations/wishlistValidation";
 
 const router = Router();
 
+// Get all wishlists
+router.get("/", wishlistController.getAllWishlists);
+
 // Get wishlist by email
 router.get("/:email", wishlistController.getWishlist);
 
@@ -13,4 +16,4 @@ router.post("/", validateWishlist, wishlistController.createOrUpdateWishlist);
 // Delete wishlist
 router.delete("/:email", wishlistController.removeWishlist);
 
-export { router as wishlistRoutes };
+export { router as wishlistRoute };
