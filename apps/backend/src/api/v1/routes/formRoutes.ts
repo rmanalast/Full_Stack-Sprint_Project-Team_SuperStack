@@ -5,7 +5,7 @@ import {
     getFormByIdSchema,
     deleteFormSchema
 } from "../validations/formCartValidation";
-import * as formController from "../controllers/formController";
+import * as formController from "../controllers/formController.ts";
 import {findOrCreateUser} from "../middleware/findOrCreateUser";
 import {requireAuth} from "@clerk/express";
 
