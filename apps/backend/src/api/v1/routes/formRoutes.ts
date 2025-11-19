@@ -5,9 +5,8 @@ import {
     getFormByIdSchema,
     deleteFormSchema
 } from "../validations/formCartValidation";
-import * as formController from "../controllers/formController.ts";
-import {findOrCreateUser} from "../middleware/findOrCreateUser";
-import {requireAuth} from "@clerk/express";
+import * as formController from "../controllers/formController";
+
 
 const router: Router = express.Router();
 
@@ -16,14 +15,13 @@ const router: Router = express.Router();
 // GET all form for user
 router.get(
     "/forms",
-    findOrCreateUser,
+   
     formController.getAllForms
 );
 
 // GET one form by ID
 router.get(
     "/forms/:id",
-    findOrCreateUser,
     validateRequest(getFormByIdSchema),
     formController.getFormById
 );
@@ -31,7 +29,6 @@ router.get(
 //POST new form
 router.post(
     "/forms",
-    requireAuth(),
     validateRequest(postFormSchema),
     formController.createForm  
 );
@@ -39,7 +36,6 @@ router.post(
 // PUT update form by ID 
 router.put(
     "/forms/:id",
-    requireAuth(),
     validateRequest(postFormSchema),
     formController.updateForm
 );
@@ -47,7 +43,6 @@ router.put(
 //DELETE form by ID
 router.delete(
     "/forms/:id",
-    requireAuth(),
     validateRequest(deleteFormSchema),
     formController.deleteForm
 );

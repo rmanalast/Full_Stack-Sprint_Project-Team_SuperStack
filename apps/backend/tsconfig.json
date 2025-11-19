@@ -9,6 +9,7 @@
       "baseUrl": "./",
       "sourceMap": true,
       "lib": ["ESNext"],
+      "types": ["node"],
       "paths": {
         "*": ["*"]
       }

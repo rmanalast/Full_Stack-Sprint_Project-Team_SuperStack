@@ -33,7 +33,7 @@ app.get("/",  (_req, res) => {
 });
 
 // use termRoutes
-app.use("/api/v1"); // ADD ROUTES HERE
+
 
 app.use("/api/v1", formRoutes);
 
