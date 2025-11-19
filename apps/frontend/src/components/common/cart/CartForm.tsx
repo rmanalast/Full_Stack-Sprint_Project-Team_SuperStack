@@ -21,6 +21,8 @@ type Contact = {
 // Define the ContactForm component
 export function ContactForm(){
 
+    const [showList, setShowList] = useState(false);
+
     const [contact, setContact] = useState<Contact>({
         name:"",
         email:"",
@@ -88,7 +90,12 @@ export function ContactForm(){
 
             <AddCart  />
 
-            <FormList />
+            
+            <button type="button" onClick={() => setShowList(!showList)}>
+            {showList ? "Hide List" : "Show List"}
+            </button>
+
+            {showList && <FormList />}
             
             
                     

@@ -1,4 +1,4 @@
-// import { FrontendForm as Form } from "@shared/types/frontend-form";
+import type { Form } from "@shared/types/formType";
 
 type FormsResponseJSON = { message: string; data: Form[] };
 type FormResponseJSON = { message: string; data: Form };

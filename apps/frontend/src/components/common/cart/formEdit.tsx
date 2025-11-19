@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import { updateForm } from "../../../repository/formRepo"
-
-type Form = {
-  id: number;
-  name: string;
-  email: string;
-  card: string;
-  expiry: string;
-  cve: string;
-};
+import type { Form } from "@shared/types/formType";
 
 export function FormEdit({form}: {form:Form}){
 

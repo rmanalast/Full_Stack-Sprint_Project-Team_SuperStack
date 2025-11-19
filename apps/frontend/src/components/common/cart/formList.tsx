@@ -3,15 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchForms } from "../../../repository/formRepo";
 import { FormEdit } from "./formEdit";
-
-type Form = {
-  id: number;
-  name: string;
-  email: string;
-  card: string;
-  expiry: string;
-  cve: string;
-};
+import type { Form } from "@shared/types/formType";
 
 export function FormList(){
     const [forms,setForms] = useState<Form[]>([]);
@@ -34,11 +26,17 @@ export function FormList(){
             <ul>
                 {forms.map(f => (
                     <li key = {f.id}>
+                        <br/>
                         <strong>Name:</strong> {f.name} | 
+                        <br/>
                         <strong>Email:</strong> {f.email} | 
+                        <br/>
                         <strong>Card:</strong> {f.card} | 
+                        <br/>
                         <strong>Expiry:</strong> {f.expiry} | 
+                        <br/>
                         <strong>CVE:</strong> {f.cve}
+                        <br/>
                         <FormEdit form={f} />
                     </li>
                 ))}
