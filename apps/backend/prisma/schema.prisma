@@ -62,3 +62,19 @@ model wishList {
   items String[]
   dateAdded DateTime @default(now())
 }
+
+////////////////////////////////////////
+//      Credit Card Info
+////////////////////////////////////////
+
+model Form {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  card      String
+  expiry    String
+  cve       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
