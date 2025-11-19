@@ -4,6 +4,7 @@ import type { FormEvent } from 'react';
 import './cartStyles.css';
 import { AddCart } from './addDropCart';
 import './formStyles.css'
+import { createForm } from '../../../repository/formRepo';
 
 // Define a TypeScript type for the contact form data
 type Contact = {
@@ -29,9 +30,20 @@ export function ContactForm(){
 
     const [isPaid, setIsPaid] = useState(false);
 
-    function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsPaid(true);
+    try {
+
+        const sessionToken = null;
+        const savedForm = await createForm(contact, sessionToken);
+        console.log("Form saved:", savedForm);
+        setIsPaid(true);
+
+    } catch(err){
+        console.error("Error saving form:", err);
+    }
+
+    
     console.log('Payment complete:', contact);
     console.log('Submitted details:', contact);
 }
