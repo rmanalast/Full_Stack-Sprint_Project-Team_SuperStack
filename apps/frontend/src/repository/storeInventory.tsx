@@ -1,0 +1,1 @@
+import InventoryList from "../data/itemsList";

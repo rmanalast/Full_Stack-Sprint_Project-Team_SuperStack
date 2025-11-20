@@ -1,0 +1,107 @@
+// CarForm.tsx
+import { useState } from 'react';
+import type { FormEvent } from 'react';
+import './cartStyles.css';
+import { AddCart } from './addDropCart';
+import './formStyles.css'
+import { createForm } from '../../../repository/formRepo';
+import { FormList } from './formList';
+
+
+// Define a TypeScript type for the contact form data
+type Contact = {
+    name:string;
+    email:string;
+    card:string
+    expiry:string;
+    cve:string;
+};
+
+
+// Define the ContactForm component
+export function ContactForm(){
+
+    const [showList, setShowList] = useState(false);
+
+    const [contact, setContact] = useState<Contact>({
+        name:"",
+        email:"",
+        card:"",
+        expiry:"",
+        cve:"",
+
+    })
+
+    const [isPaid, setIsPaid] = useState(false);
+
+    async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    try {
+
+        const sessionToken = null;
+        const savedForm = await createForm(contact, sessionToken);
+        console.log("Form saved:", savedForm);
+        setIsPaid(true);
+
+    } catch(err){
+        console.error("Error saving form:", err);
+    }
+
+    
+    console.log('Payment complete:', contact);
+    console.log('Submitted details:', contact);
+}
+    
+    return(
+        <section className = "cart__form">
+            <h2> Complete Form </h2>
+            <p>ADD/Drop form cart</p>
+
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor ="name"> Your Name</label>
+                    <input type="text" id = "name" value={contact.name} onChange={(e) => setContact({ ...contact, name: e.target.value })} required minLength={3} />
+                </div>
+                <div>
+                    <label htmlFor ="email"> Email</label>
+                    <input type="text" id = "email" value={contact.email} onChange={(e) => setContact({ ...contact, email: e.target.value })} required />
+                </div>
+                <div>
+                    <label htmlFor ="card">Card Info </label>
+                    <input type="text" id = "card" value={contact.card} onChange={(e) => setContact({ ...contact, card: e.target.value })} required minLength={10}/>
+                </div>
+                <div>
+                    <label htmlFor ="expiry">Expiry Date </label>
+                    <input type="text" id = "expiry" value={contact.expiry} onChange={(e) => setContact({ ...contact, expiry: e.target.value })} required minLength={4} />
+                </div>
+                <div>
+                    <label htmlFor ="cve">CVE </label>
+                    <input type="text" id = "cve" value={contact.cve} onChange={(e) => setContact({ ...contact, cve: e.target.value })} required minLength={3}/>
+                </div>
+                <div>
+                    <button type = "submit">
+                        Submit
+                    </button>
+                </div>
+            </form>  
+            <div>
+                Status: {isPaid ? <strong>Payment Complete</strong> : <em>Not Paid For</em>}
+            </div>
+
+            <AddCart  />
+
+            
+            <button type="button" onClick={() => setShowList(!showList)}>
+            {showList ? "Hide List" : "Show List"}
+            </button>
+
+            {showList && <FormList />}
+            
+            
+                    
+        </section>
+
+    );
+
+}
+
