@@ -19,7 +19,7 @@ export function Rentals() {
             <RentalPopulator message={"No Rentals Available"}r={rentals} onClick={async (id: number) => {await toggleSelected(id);}}
             /> 
             </section>
-            <RentalForm r={rentals} onClick={async (id: number) => {await toggleSelected(id);}} onSubmit={async (id: number) => {await toggleRented(id);}}></RentalForm>
+            <RentalForm r={rentals} onClick={async (id: number) => {await toggleSelected(id);}} onSubmit={async (id: number[]) => {await toggleRented(id);}}></RentalForm>
             </>    
     )
     }

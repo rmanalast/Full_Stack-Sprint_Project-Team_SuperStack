@@ -8,6 +8,7 @@ import setupSwagger from "../config/swagger";
 import errorHandler from "./api/v1/middleware/errorHandler";
 
 import { wishlistRoute } from "./api/v1/routes/wishlistRoutes";
+import rentalRoutes from "../src/api/v1/routes/rentalRoutes";
 
 // initialize express application
 const app: Express = express();
@@ -35,6 +36,9 @@ app.get("/",  (_req, res) => {
 
 // Wishlist routes
 app.use("/api/v1/wishlist", wishlistRoute);
+
+// Rental routes
+app.use("/api/v1", rentalRoutes); // ADD ROUTES HERE
 
 //errorhandler catches errors as last element in middleware chain
 // occurs when "next" is invoked
