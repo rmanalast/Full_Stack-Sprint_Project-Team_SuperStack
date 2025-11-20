@@ -20,7 +20,7 @@ export function useRental() {
     const [error, setError] = useState<string | null>();
 
 
-        const fetchRentals = async () => {
+      const fetchRentals = async () => {
 
       try {
         const data = await services.getRentals();
@@ -30,28 +30,22 @@ export function useRental() {
         setError(`${e}`)
       }
       };
+      
+    const toggleSelected = (sku: number) => {
+      const f = rentals.find(r => r.sku === sku);
 
-    const toggleRented = async(sku: number) => {
-      try {
-        await services.toggleIsRented(sku);
+        if (!f) {
+          throw Error(`Item with ID ${sku} not found`)
+        }
+          updateRentals(rentals.map(item => 
+          item.sku === sku ? {...item, isSelected: !item.isSelected} : item))
+      };
 
-        await fetchRentals()
+    const toggleRented = async (sku: number[]) => {
+      await services.updateRentals(sku);
 
-      }
-      catch(e){
-        setError(`${e}`)
-      }
-    };
-
-    const toggleSelected = async(sku: number) => {
-      try {
-        await services.toggleIsSelected(sku);
-
-        await fetchRentals()
-      }
-      catch(e){
-        setError(`${e}`)
-      }
+      updateRentals(rentals.map(item => 
+        sku.includes(item.sku) ? {...item, isRented: !item.isRented} : item))
     };
 
 

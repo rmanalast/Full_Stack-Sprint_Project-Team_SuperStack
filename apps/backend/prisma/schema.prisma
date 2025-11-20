@@ -59,7 +59,7 @@ model Notfication {
 
 model wishList {
   email String @id
-  items String[]
+  items String[] 
   dateAdded DateTime @default(now())
 }
 

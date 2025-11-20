@@ -10,7 +10,7 @@ export function RentalForm({
 }: {
   r: Rental[];
   onClick: (sku: number) => void;
-  onSubmit: (sku: number) => void;
+  onSubmit: (sku: number[]) => void;
 }) {
   const selected: Rental[] = r.filter(
     (s) => s.isSelected === true && s.isRented === false
@@ -36,14 +36,18 @@ export function RentalForm({
     console.log("Submitted:", values);
 
     // Call onSubmit for each selected rental
+    const submittor: number[] = []
     r.map((s) => {
       const i = selected.find((sel) => sel.sku === s.sku);
       if (i) {
-        onSubmit(i.sku);
+        submittor.push((s.sku))
       }
-    });
+    }
+  );
 
+    onSubmit(submittor)
     resetForm();
+
   };
 
   return (

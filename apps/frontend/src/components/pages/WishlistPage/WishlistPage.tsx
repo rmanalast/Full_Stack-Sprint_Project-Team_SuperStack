@@ -1,27 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WishListForm from "../../common/forms/WishListForm/WishListForm";
-import BoxItems from "../../common/item_populator/item_populator"
+import BoxItems from "../../common/item_populator/item_populator";
 import type { Inventory } from "../../../data/itemsList";
 import "./WishlistPage.css";
 
-/* This is the wishlist page where users can view and manage their saved notification emails. */
+import { wishlistRepo } from "../../../repository/wishlistRepo";
 
-function WishlistPage(
-  {
-    itemList,
-    itemUpdater
-  }:
-  {
-    itemList: Inventory[];
-    itemUpdater: React.Dispatch<React.SetStateAction<Inventory[]>>
-  }
-) {
-  // State to hold notification emails
+function WishlistPage({
+  itemList,
+  itemUpdater
+}: {
+  itemList: Inventory[];
+  itemUpdater: React.Dispatch<React.SetStateAction<Inventory[]>>;
+}) {
+  
   const [notifications, setNotifications] = useState<string[]>([]);
 
-  // Handler to remove an email from the list
+  // Load saved emails from backend (I.4)
+  useEffect(() => {
+    async function loadSavedNotifications() {
+      try {
+        const data = await wishlistRepo.getAll();
+        // backend returns array of wishlist rows → map emails
+        setNotifications(data.map((entry: any) => entry.email));
+      } catch (error) {
+        console.error("Error loading wishlist:", error);
+      }
+    }
+
+    loadSavedNotifications();
+  }, []);
+
+  //
   const handleRemove = (emailToRemove: string) => {
     setNotifications(prev => prev.filter(email => email !== emailToRemove));
+  };
+
+  //
+  const handleAddEmail = async (email: string) => {
+    try {
+      await wishlistRepo.addEmail(email);
+      setNotifications(prev => [...prev, email]);
+    } catch (err) {
+      console.error("Failed to save email:", err);
+      alert("Could not save email to server.");
+    }
   };
 
   return (
@@ -29,29 +52,28 @@ function WishlistPage(
       <header>
         <h1>WishList</h1>
       </header>
+
       <main>
-        <BoxItems 
-          itemsList={itemList} 
+        <BoxItems
+          itemsList={itemList}
           itemUpdater={itemUpdater}
-          sortingtype={true} 
+          sortingtype={true}
           listVal="isWishListed"
           allowRemove={true}
         />
-          List of items in your wishlist.
+        List of items in your wishlist.
 
-        {/* I.2 Form Component */}
+        {/* Pass the new handler to form */}
         <WishListForm
-          notifications={notifications}
-          setNotifications={setNotifications}
+          {...({ notifications, setNotifications, saveToBackend: handleAddEmail } as any)}
         />
 
-        {/* I.3 Element Addition/Removal */}
         <h2>Notifications List</h2>
         {notifications.length === 0 ? (
           <p>No emails signed up yet.</p>
         ) : (
           <ul>
-            {notifications.map(email => (
+            {notifications.map((email) => (
               <li key={email}>
                 {email}
                 <button onClick={() => handleRemove(email)}>Remove</button>

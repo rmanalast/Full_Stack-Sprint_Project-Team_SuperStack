@@ -25,8 +25,8 @@ export function RentalPopulator ({
           <div className="ChildItem" key={selectedRental.sku}>
             <img
               className="ChildImage"
-              src={selectedRental.Image.src}
-              alt={selectedRental.Image.alt ?? selectedRental.name}
+              src={selectedRental.image}
+              alt={selectedRental.name}
             />
             <p className="ChildContent">{selectedRental.name}</p>
             <p className="ChildContent">{selectedRental.productType}</p>
