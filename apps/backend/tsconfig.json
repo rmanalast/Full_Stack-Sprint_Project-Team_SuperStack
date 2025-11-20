@@ -1,5 +1,5 @@
 {
-    // Use the root directory for configuration
+    // Use the root directory for configuration.
     // any overriding configs defined here
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
@@ -9,10 +9,11 @@
       "baseUrl": "./",
       "sourceMap": true,
       "lib": ["ESNext"],
+      "types": ["node"],
       "paths": {
         "*": ["*"]
       }
     },
-    "include": ["src/**/*", "tests/**/*"],
+    "include": ["src/**/*", "tests/**/*" , "../../shared/types"],
     "exclude": ["node_modules", "dist"]
 }

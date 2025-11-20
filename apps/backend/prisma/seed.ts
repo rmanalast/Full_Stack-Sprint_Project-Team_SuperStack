@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import {RentalData, RetailData}  from "./seedData";
+import {RentalData, RetailData,FormData}  from "./seedData";
 
 const prisma = new PrismaClient();
 
@@ -21,6 +21,11 @@ async function main() {
             skipDuplicates: true
         }
     )
+
+    await prisma.form.createMany({
+        data: FormData,
+        skipDuplicates: true
+    });
 
 };
 

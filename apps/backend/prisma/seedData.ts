@@ -1,6 +1,6 @@
 import { retail, rental } from "@prisma/client";
 import { Prisma } from "@prisma/client";
-
+import {Form} from "@prisma/client"
 export const RetailData: retail[] = [
     // 10 Video Games
     {
@@ -411,3 +411,84 @@ export const RentalData: rental[] = [
         isSelected: false
     }
 ]
+
+
+export const FormData: Omit<Form, "id"|"createdAt"|"updatedAt">[] = [
+    {
+    name: "Alice Johnson",
+    email: "alice@example.com",
+    card: "4111111111111111",
+    expiry: "12/26",
+    cve: "123"
+  },
+  {
+    name: "Bob Smith",
+    email: "bob@example.com",
+    card: "5555555555554444",
+    expiry: "11/27",
+    cve: "456"
+  },
+  {
+    name: "Charlie Davis",
+    email: "charlie@example.com",
+    card: "378282246310005",
+    expiry: "01/28",
+    cve: "789"
+  },
+  {
+    name: "Diana Prince",
+    email: "diana@example.com",
+    card: "6011111111111117",
+    expiry: "03/26",
+    cve: "321"
+  },
+  {
+    name: "Ethan Hunt",
+    email: "ethan@example.com",
+    card: "3530111333300000",
+    expiry: "07/27",
+    cve: "654"
+  },
+  {
+    name: "Fiona Gallagher",
+    email: "fiona@example.com",
+    card: "6304000000000000",
+    expiry: "09/26",
+    cve: "987"
+  },
+  {
+    name: "George Miller",
+    email: "george@example.com",
+    card: "4007000000027",
+    expiry: "10/27",
+    cve: "159"
+  },
+  {
+    name: "Hannah Brown",
+    email: "hannah@example.com",
+    card: "6011000990139424",
+    expiry: "11/28",
+    cve: "753"
+  },
+  {
+    name: "Ian Wright",
+    email: "ian@example.com",
+    card: "30569309025904",
+    expiry: "12/26",
+    cve: "852"
+  },
+  {
+    name: "Julia Roberts",
+    email: "julia@example.com",
+    card: "6011111111111117",
+    expiry: "01/29",
+    cve: "951"
+  }
+];
+
+
+
+
+
+
+

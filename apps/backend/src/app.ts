@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import corsOptions from "../config/cors";
 import setupSwagger from "../config/swagger";
 import errorHandler from "./api/v1/middleware/errorHandler";
+import formRoutes from "./api/v1/routes/formRoutes";
 
 import { wishlistRoute } from "./api/v1/routes/wishlistRoutes";
 import rentalRoutes from "../src/api/v1/routes/rentalRoutes";
@@ -33,6 +34,9 @@ setupSwagger(app);
 app.get("/",  (_req, res) => {
     res.send("Got response from backend!");
 });
+
+// Cart routes
+app.use("/api/v1", formRoutes);
 
 // Wishlist routes
 app.use("/api/v1/wishlist", wishlistRoute);
