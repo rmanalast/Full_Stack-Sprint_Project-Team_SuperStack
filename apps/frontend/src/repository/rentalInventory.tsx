@@ -18,7 +18,7 @@ export async function getItems(): Promise<Rental[]> {
 
     const json: RentalsResponseJSON = await response.json();
     return json.data;
-}
+};
 
 export async function updateRental(s: number[]) {
     console.log("Sending body:", JSON.stringify({ rentals: s }));
