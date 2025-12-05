@@ -1,4 +1,4 @@
-export type TermWithUsers = Prisma.TermGetPayload<typeof termWithUsers>;
+//export type TermWithUsers = Prisma.TermGetPayload<typeof termWithUsers>;
 
 import { User } from "@prisma/client";
 import prisma from "../../../../prisma/client";
