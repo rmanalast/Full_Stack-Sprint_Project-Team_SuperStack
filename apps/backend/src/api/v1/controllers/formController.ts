@@ -9,7 +9,8 @@ export const createForm = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const newForm = await formService.createForm(req.body);
+    const { userId } = req.auth;
+    const newForm = await formService.createForm(req.body,userId);
     res.status(201).json(successResponse(newForm, "New Form created successfully"));
   } catch (error) {
     next(error);
