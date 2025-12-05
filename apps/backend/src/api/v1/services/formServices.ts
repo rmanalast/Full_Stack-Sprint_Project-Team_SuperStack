@@ -21,10 +21,14 @@ export const createForm = async (
     card: string;
     expiry: string;
     cve: string;
-  }
+  },
+  userId: string
 ): Promise<Form> => {
   const newForm: Form = await prisma.form.create({
-    data: formData,
+    data: {
+    ...formData,
+    userId,
+  },
   });
 
   return newForm;

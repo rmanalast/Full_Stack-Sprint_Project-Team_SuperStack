@@ -27,7 +27,8 @@ export const findOrCreateUser = async (
 
         // If userId not found with auth, set userId to null 
         // Prevents userId from being included erroneously in the request body
-        req.userId = userId;
+        //I casted here.
+        (req as any).userId = userId;
         next();
     } catch (error) {
         next(error);

@@ -30,3 +30,9 @@ export const wishlistService = {
     });
   }
 };
+
+async function getWishlistByUserId(userId: string) {
+  return prisma.wishList.findMany({
+    where: { userId }
+  });
+}

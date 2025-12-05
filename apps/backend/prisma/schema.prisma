@@ -75,6 +75,7 @@ model wishList {
 model User {
   id      String @id
   rentals rental[]
+  forms Form[]
 }
 
 ////////////////////////////////////////
@@ -83,6 +84,8 @@ model User {
 
 model Form {
   id        Int      @id @default(autoincrement())
+  userId    String   // Clerk user ID
+  user      User     @relation(fields: [userId], references: [id])
   name      String
   email     String
   card      String
