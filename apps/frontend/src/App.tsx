@@ -10,7 +10,6 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 
-
 function App() {
   const [inventory, updateInventory] = useState(InventoryList);
   return (
