@@ -11,6 +11,8 @@ import formRoutes from "./api/v1/routes/formRoutes";
 import { wishlistRoute } from "./api/v1/routes/wishlistRoutes";
 import rentalRoutes from "../src/api/v1/routes/rentalRoutes";
 
+import { clerkMiddleware } from "@clerk/express";
+
 // initialize express application
 const app: Express = express();
 
@@ -43,6 +45,8 @@ app.use("/api/v1/wishlist", wishlistRoute);
 
 // Rental routes
 app.use("/api/v1", rentalRoutes); // ADD ROUTES HERE
+
+app.use(clerkMiddleware());
 
 //errorhandler catches errors as last element in middleware chain
 // occurs when "next" is invoked
