@@ -27,18 +27,32 @@ CREATE TABLE "rental" (
 );
 
 -- CreateTable
-CREATE TABLE "Notfication" (
+CREATE TABLE "notification" (
     "email" TEXT NOT NULL,
     "dateAdded" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "Notfication_pkey" PRIMARY KEY ("email")
+    CONSTRAINT "notification_pkey" PRIMARY KEY ("email")
 );
 
 -- CreateTable
-CREATE TABLE "wishList" (
+CREATE TABLE "wishlist" (
     "email" TEXT NOT NULL,
     "items" TEXT[],
     "dateAdded" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "wishList_pkey" PRIMARY KEY ("email")
+    CONSTRAINT "wishlist_pkey" PRIMARY KEY ("email")
+);
+
+-- CreateTable
+CREATE TABLE "form" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "card" TEXT NOT NULL,
+    "expiry" TEXT NOT NULL,
+    "cve" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "form_pkey" PRIMARY KEY ("id")
 );
