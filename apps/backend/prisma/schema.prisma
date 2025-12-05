@@ -63,12 +63,24 @@ model wishList {
   dateAdded DateTime @default(now())
 }
 
+
+////////////////////////////////////////
+//      Users
+////////////////////////////////////////
+
+model User {
+  id        String @id
+  forms Form[]
+}
+
 ////////////////////////////////////////
 //      Credit Card Info
 ////////////////////////////////////////
 
 model Form {
   id        Int      @id @default(autoincrement())
+  userId    String   // Clerk user ID
+  user      User     @relation(fields: [userId], references: [id])
   name      String
   email     String
   card      String
