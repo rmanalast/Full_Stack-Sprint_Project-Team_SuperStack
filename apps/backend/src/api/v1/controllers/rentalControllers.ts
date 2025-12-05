@@ -2,6 +2,7 @@ import { successResponse } from "../models/responseModel";
 import { Request, Response, NextFunction } from "express";
 
 import * as Services from "../services/rentalServices";
+import { userRented } from "../services/userService";
 
 /**
  * 
@@ -35,13 +36,16 @@ export const updateStatus = async(
     next: NextFunction
 ): Promise<void> => {
     try{
-        const rentals: [] = req.body.rentals;
+        if (!req.userId) throw new Error("User NOT FOUND");
+        console.log("recieved")
+        const rentals: number[] = req.body.rentals;
 
-        console.log(req.body)
-
-        await Promise.all(rentals.map(rental => {
+        await Promise.all(rentals.map(rental => 
             Services.updatedRental(Number(rental), true)
-        }))
+        ));
+
+        await userRented(req.userId,rentals)
+
         res.status(200).json(
             successResponse("Rentals Updated")
         )

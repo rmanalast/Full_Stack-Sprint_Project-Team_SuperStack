@@ -40,6 +40,10 @@ model rental {
     image String
     isRented Boolean @default(false)
     isSelected Boolean @default(false)
+
+    userId String?
+    user   User? @relation(fields: [userId], references: [id])
+
 }
 
 
@@ -69,7 +73,8 @@ model wishList {
 ////////////////////////////////////////
 
 model User {
-  id        String @id
+  id      String @id
+  rentals rental[]
 }
 
 ////////////////////////////////////////

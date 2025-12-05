@@ -21,11 +21,30 @@ export async function getRentals() {
     }
 };
 
-export async function updateRentals(sku: number[]) {
+export async function updateRentals(sku: number[], token: string) {
     try {
-        await REPO.updateRental(sku);
+        console.log("sent to repo")
+        await REPO.updateRental(sku, token);
     }
     catch(e) {
         throw new Error(`AN Error Occured: ${e}`)
     }
 };
+
+export async function history(token: string) {
+    try {
+        const h: number[] = await REPO.getHistory(token)
+
+        if (!h)
+        {
+            throw new Error("Failed to retrieve history")
+        }
+
+        console.log(h)
+        return h
+    }
+    catch(e)
+    {
+        throw new Error(`An Unexpected Error Occured ${e}`)
+    }
+}

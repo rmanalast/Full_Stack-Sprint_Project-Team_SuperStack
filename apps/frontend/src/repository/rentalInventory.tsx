@@ -5,9 +5,10 @@ type RentalsResponseJSON = {message: string, data: Rental[]};
 
 // Base url for backend
 // Vite provides this value from the .env file rather than dotenv package
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:5437";
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000";
 const BASE_URL = `${API_BASE}/api/v1`;
 const RENTAL_ENDPOINT = "/rentals";
+
 
 export async function getItems(): Promise<Rental[]> {
     const response: Response = await fetch(`${BASE_URL}${RENTAL_ENDPOINT}`);
@@ -20,19 +21,38 @@ export async function getItems(): Promise<Rental[]> {
     return json.data;
 };
 
-export async function updateRental(s: number[]) {
+export async function updateRental(s: number[], token: string) {
     console.log("Sending body:", JSON.stringify({ rentals: s }));
 
 
     const response: Response = await fetch(`${BASE_URL}${RENTAL_ENDPOINT}`, 
         {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json" },
         body: JSON.stringify({rentals: s})
         }
     );
+
+    console.log(token)
+    console.log(response)
 
     if (!response.ok) {
         throw new Error("Failed to update")
     };
 };
+
+export async function getHistory(token: string): Promise<[]> {
+    const response: Response = await fetch(`${BASE_URL}${RENTAL_ENDPOINT}/history`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch")}
+
+    const res = await response.json()
+
+    return res.data
+}

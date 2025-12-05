@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as services from "../services/rentalServices";
 import type { Rental } from "../data/rentals";
+import { useUser, useAuth } from "@clerk/clerk-react";
 
 /**
  * Custom hook for rental page logic and handling.
@@ -15,11 +16,15 @@ import type { Rental } from "../data/rentals";
 
 
 export function useRental() {
+    const { getToken } = useAuth()
 
     const [rentals, updateRentals] = useState<Rental[]>([]);
     const [error, setError] = useState<string | null>();
+    const [history, setHistory] = useState<Rental[]>([])
 
 
+
+    const { isSignedIn } = useUser();
       const fetchRentals = async () => {
 
       try {
@@ -42,20 +47,56 @@ export function useRental() {
       };
 
     const toggleRented = async (sku: number[]) => {
-      await services.updateRentals(sku);
+      const t = await getToken()
+
+      if (!t) {
+        throw new Error("Bad Token")
+      }
+      await services.updateRentals(sku, t);
 
       updateRentals(rentals.map(item => 
         sku.includes(item.sku) ? {...item, isRented: !item.isRented} : item))
-    };
 
+      const filtered: Rental[] = rentals.filter(r => sku.includes(r.sku));
+
+      setHistory([...filtered])
+    };
 
     useEffect(() => {
       fetchRentals();
       }, []);
 
+
+    useEffect(() => {
+      const getHistory = async () => {
+        if (!isSignedIn) {
+          setHistory([])
+          return;
+        }
+
+      try {
+        const t = await getToken()
+        if (!t) {
+          throw new Error("Bad Token")
+        }
+        const h: number[] = await services.history(t)
+        console.log(h)
+        const historySkus = new Set(h);
+        const filtered = rentals.filter(r => historySkus.has(r.sku));
+        setHistory(filtered)
+      } catch(e) {
+        console.log("Get wrecked")
+        throw new Error(`${e}`)
+      }
+    };
+
+    getHistory()
+    },[isSignedIn] )
+
     return {
         rentals,
         error,
         toggleRented,
-        toggleSelected
+        toggleSelected,
+        history
         }};
