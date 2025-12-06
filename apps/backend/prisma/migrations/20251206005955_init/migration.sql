@@ -22,30 +22,41 @@ CREATE TABLE "rental" (
     "image" TEXT NOT NULL,
     "isRented" BOOLEAN NOT NULL DEFAULT false,
     "isSelected" BOOLEAN NOT NULL DEFAULT false,
+    "userId" TEXT,
 
     CONSTRAINT "rental_pkey" PRIMARY KEY ("sku")
 );
 
 -- CreateTable
-CREATE TABLE "notification" (
+CREATE TABLE "Notfication" (
     "email" TEXT NOT NULL,
     "dateAdded" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "notification_pkey" PRIMARY KEY ("email")
+    CONSTRAINT "Notfication_pkey" PRIMARY KEY ("email")
 );
 
 -- CreateTable
-CREATE TABLE "wishlist" (
+CREATE TABLE "wishList" (
     "email" TEXT NOT NULL,
     "items" TEXT[],
     "dateAdded" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "userId" TEXT,
 
-    CONSTRAINT "wishlist_pkey" PRIMARY KEY ("email")
+    CONSTRAINT "wishList_pkey" PRIMARY KEY ("email")
 );
 
 -- CreateTable
-CREATE TABLE "form" (
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL,
+    "email" TEXT,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Form" (
     "id" SERIAL NOT NULL,
+    "userId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "card" TEXT NOT NULL,
@@ -54,5 +65,23 @@ CREATE TABLE "form" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "form_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Form_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "wishList_email_key" ON "wishList"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "wishList_userId_key" ON "wishList"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- AddForeignKey
+ALTER TABLE "rental" ADD CONSTRAINT "rental_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "User" ADD CONSTRAINT "User_email_fkey" FOREIGN KEY ("email") REFERENCES "wishList"("email") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Form" ADD CONSTRAINT "Form_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

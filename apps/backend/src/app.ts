@@ -2,17 +2,15 @@ import express, {Express} from "express";
 import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
-import { clerkMiddleware } from "@clerk/express";
 
 import corsOptions from "../config/cors";
 import setupSwagger from "../config/swagger";
 import errorHandler from "./api/v1/middleware/errorHandler";
-import formRoutes from "./api/v1/routes/formRoutes";
+import { clerkMiddleware } from "@clerk/express";
 
+import formRoutes from "./api/v1/routes/formRoutes";
 import { wishlistRoute } from "./api/v1/routes/wishlistRoutes";
 import rentalRoutes from "../src/api/v1/routes/rentalRoutes";
-
-import { clerkMiddleware } from "@clerk/express";
 
 // initialize express application
 const app: Express = express();

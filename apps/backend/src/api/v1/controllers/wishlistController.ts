@@ -42,20 +42,20 @@ export const wishlistController = {
 
     return res.json({ message: "Wishlist removed successfully." });
   },
-};
-
+  
   // Get wishlist for authenticated user
   async getUserWishlist(req: Request, res: Response) {
-    const userId = req.auth.userId;  // Clerk auto injects this
-
+    const userId = req.userId;  // Clerk auto injects this
+    
     if (!userId) {
       return res.status(401).json({ error: "Not authenticated" });
     }
-
+    
     try {
-      const wishlist = await wishlistService.getWishlistByUserId(userId);
+      const wishlist = await wishlistService.getWishlistByUserId(userId)
       return res.json(wishlist);
     } catch (err) {
       return res.status(500).json({ error: "Failed to fetch user wishlist" });
     }
   }
+};

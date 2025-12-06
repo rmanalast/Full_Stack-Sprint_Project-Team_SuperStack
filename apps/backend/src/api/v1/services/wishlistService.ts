@@ -6,7 +6,7 @@ export const wishlistService = {
   async getAllWishlists() {
     return prisma.wishList.findMany();
   },
-  
+
   // Get a wishlist by email
   async getWishlist(email: string) {
     return prisma.wishList.findUnique({
@@ -28,11 +28,12 @@ export const wishlistService = {
     return prisma.wishList.delete({
       where: { email },
     });
+  },
+
+  // ✔ Get a wishlist by userId
+  async getWishlistByUserId(userId: string) {
+    return prisma.wishList.findUnique({
+      where: { userId },
+    });
   }
 };
-
-async function getWishlistByUserId(userId: string) {
-  return prisma.wishList.findMany({
-    where: { userId }
-  });
-}

@@ -235,7 +235,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://moviemaps.org/images/1cvt",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1002,
@@ -244,7 +245,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg",
         isRented: true,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1003,
@@ -253,7 +255,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1004,
@@ -262,7 +265,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1005,
@@ -271,7 +275,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg",
         isRented: true,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1006,
@@ -280,7 +285,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/8/82/Pulp_Fiction_cover.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1007,
@@ -289,7 +295,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1008,
@@ -298,7 +305,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg",
         isRented: true,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1009,
@@ -307,7 +315,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
         isRented: true,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 1010,
@@ -316,7 +325,8 @@ export const RentalData: rental[] = [
         productType: "movie",
         image: "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
 
     // Video Games
@@ -327,7 +337,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2002,
@@ -336,7 +347,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg",
         isRented: true,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2003,
@@ -345,7 +357,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2004,
@@ -354,7 +367,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/8/8d/Elden_Ring_cover.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2005,
@@ -363,7 +377,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/0/0e/SpiderMan_Miles_Morales_cover.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2006,
@@ -372,7 +387,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/7/79/Horizon_Forbidden_West.jpg",
         isRented: true,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2007,
@@ -381,7 +397,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2008,
@@ -390,7 +407,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2009,
@@ -399,7 +417,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V_cover.jpg",
         isRented: true,
-        isSelected: false
+        isSelected: false,
+        userId: null
     },
     {
         sku: 2010,
@@ -408,97 +427,8 @@ export const RentalData: rental[] = [
         productType: "video_game",
         image: "https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg",
         isRented: false,
-        isSelected: false
+        isSelected: false,
+        userId: null
     }
 ]
-
-
-export const FormData: Omit<Form, "id"|"createdAt"|"updatedAt">[] = [
-    {
-    userId: "test-user-1",
-    name: "Alice Johnson",
-    email: "alice@example.com",
-    card: "4111111111111111",
-    expiry: "12/26",
-    cve: "123"
-  },
-  {
-    userId: "test-user-2",
-    name: "Bob Smith",
-    email: "bob@example.com",
-    card: "5555555555554444",
-    expiry: "11/27",
-    cve: "456"
-  },
-  {
-    userId: "test-user-3",
-    name: "Charlie Davis",
-    email: "charlie@example.com",
-    card: "378282246310005",
-    expiry: "01/28",
-    cve: "789"
-  },
-  {
-    userId: "test-user-4",
-    name: "Diana Prince",
-    email: "diana@example.com",
-    card: "6011111111111117",
-    expiry: "03/26",
-    cve: "321"
-  },
-  {
-    userId: "test-user-5",
-    name: "Ethan Hunt",
-    email: "ethan@example.com",
-    card: "3530111333300000",
-    expiry: "07/27",
-    cve: "654"
-  },
-  {
-    userId: "test-user-6",
-    name: "Fiona Gallagher",
-    email: "fiona@example.com",
-    card: "6304000000000000",
-    expiry: "09/26",
-    cve: "987"
-  },
-  {
-    userId: "test-user-7",
-    name: "George Miller",
-    email: "george@example.com",
-    card: "4007000000027",
-    expiry: "10/27",
-    cve: "159"
-  },
-  {
-    userId: "test-user-8",
-    name: "Hannah Brown",
-    email: "hannah@example.com",
-    card: "6011000990139424",
-    expiry: "11/28",
-    cve: "753"
-  },
-  {
-    userId: "test-user-9",
-    name: "Ian Wright",
-    email: "ian@example.com",
-    card: "30569309025904",
-    expiry: "12/26",
-    cve: "852"
-  },
-  {
-    userId: "test-user-10",
-    name: "Julia Roberts",
-    email: "julia@example.com",
-    card: "6011111111111117",
-    expiry: "01/29",
-    cve: "951"
-  }
-];
-
-
-
-
-
-
 
