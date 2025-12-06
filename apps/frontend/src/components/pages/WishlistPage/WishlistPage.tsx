@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import WishListForm from "../../common/forms/WishListForm/WishListForm";
 import BoxItems from "../../common/item_populator/item_populator";
 import type { Inventory } from "../../../data/itemsList";
-import "./WishlistPage.css";
+import "./wishlistPage.css";
 
 import { wishlistRepo } from "../../../repository/wishlistRepo";
 
@@ -65,7 +65,7 @@ function WishlistPage({
 
         {/* Pass the new handler to form */}
         <WishListForm
-          {...({ notifications, setNotifications, saveToBackend: handleAddEmail } as any)}
+          {...({ notifications, setNotifications, saveToBackend: handleAddEmail })}
         />
 
         <h2>Notifications List</h2>

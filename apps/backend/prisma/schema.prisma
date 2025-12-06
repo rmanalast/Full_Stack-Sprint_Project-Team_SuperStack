@@ -40,6 +40,10 @@ model rental {
     image String
     isRented Boolean @default(false)
     isSelected Boolean @default(false)
+
+    userId String?
+    user   User? @relation(fields: [userId], references: [id])
+
 }
 
 
@@ -58,10 +62,26 @@ model Notfication {
 ////////////////////////////////////////
 
 model wishList {
-  email String @id
+  email String @id @unique
   items String[] 
   dateAdded DateTime @default(now())
+  userId String?  @unique
+  user User?
 }
+
+
+////////////////////////////////////////
+//      Users
+////////////////////////////////////////
+
+model User {
+  id      String @id
+  rentals rental[]
+  forms Form[]
+  email String? @unique
+  wish wishList? @relation(fields: [email], references: [email])
+}
+
 
 ////////////////////////////////////////
 //      Credit Card Info
@@ -69,6 +89,8 @@ model wishList {
 
 model Form {
   id        Int      @id @default(autoincrement())
+  userId    String   // Clerk user ID
+  user      User     @relation(fields: [userId], references: [id])
   name      String
   email     String
   card      String

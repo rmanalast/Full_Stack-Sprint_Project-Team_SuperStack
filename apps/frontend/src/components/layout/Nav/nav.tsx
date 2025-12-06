@@ -1,5 +1,7 @@
 import "./nav.css";
 import {NavLink} from "react-router";
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+
 
 function Nav() {
     return(<nav>
@@ -19,6 +21,12 @@ function Nav() {
             <NavLink className="Navlink" to="/cart">
                 Cart {/** Maybe change to an image and update to show how many objects in cart in future*/}
             </NavLink>
+            <SignedOut>
+                <SignInButton />
+            </SignedOut>
+            <SignedIn>
+                <UserButton />
+            </SignedIn>
         </div>
     </nav>);
 }

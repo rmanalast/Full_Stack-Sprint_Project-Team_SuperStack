@@ -3,10 +3,10 @@ import type { Form } from "@shared/types/formType";
 type FormsResponseJSON = { message: string; data: Form[] };
 type FormResponseJSON = { message: string; data: Form };
 
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL}/api/v1`;
-const FORM_ENDPOINT = "/forms";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const FORM_ENDPOINT = "api/v1/forms";
 
-export async function fetchForms(sessionToken?: string | null): Promise<Form[]> {
+export async function fetchForms(sessionToken: string): Promise<Form[]> {
   const formResponse: Response = await fetch(
     `${BASE_URL}${FORM_ENDPOINT}`,
     sessionToken
@@ -26,7 +26,7 @@ export async function fetchForms(sessionToken?: string | null): Promise<Form[]> 
   return json.data;
 }
 
-export async function createForm(form: Form,sessionToken?:string | null): Promise<Form>{
+export async function createForm(form: Form,sessionToken:string): Promise<Form>{
     const response: Response = await fetch(`${BASE_URL}${FORM_ENDPOINT}`,
         {method: "POST",
             body: JSON.stringify(form),
@@ -44,7 +44,7 @@ export async function createForm(form: Form,sessionToken?:string | null): Promis
 }
 
 
-export async function getFormById(formId: number, sessionToken?: string | null): Promise<Form> {
+export async function getFormById(formId: number, sessionToken: string): Promise<Form> {
   const formResponse: Response = await fetch(
     `${BASE_URL}${FORM_ENDPOINT}/${formId}`,
     sessionToken

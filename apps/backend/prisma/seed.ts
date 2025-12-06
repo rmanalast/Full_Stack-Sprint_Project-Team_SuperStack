@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import {RentalData, RetailData,FormData}  from "./seedData";
+import {RentalData, RetailData}  from "./seedData";
 
 const prisma = new PrismaClient();
 
@@ -8,7 +8,6 @@ const prisma = new PrismaClient();
 // see https://www.prisma.io/docs/orm/prisma-migrate/workflows/seeding
 async function main() {
 
-    // insert terms to db
     const createManyRentals = await prisma.rental.createMany(
         {
             data: RentalData,
@@ -21,11 +20,6 @@ async function main() {
             skipDuplicates: true
         }
     )
-
-    await prisma.form.createMany({
-        data: FormData,
-        skipDuplicates: true
-    });
 
 };
 

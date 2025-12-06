@@ -3,13 +3,18 @@
 import { useState } from "react";
 import { updateForm } from "../../../repository/formRepo"
 import type { Form } from "@shared/types/formType";
+import { useAuth } from "@clerk/clerk-react";
 
 export function FormEdit({form}: {form:Form}){
 
     const[edited,setEdited] = useState<Form>(form);
+    const { getToken } = useAuth()
     async function handleUpdate(){
         try{
-            const updated = await updateForm(edited, null);
+            const t = await getToken()
+
+            if (!t) throw new Error("User Error")
+            const updated = await updateForm(edited, t);
             console.log("Updated form:", updated);
             alert("Form updated successfully");
         } catch (err) {

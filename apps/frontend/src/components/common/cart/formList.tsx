@@ -4,14 +4,19 @@ import { useEffect, useState } from "react";
 import { fetchForms } from "../../../repository/formRepo";
 import { FormEdit } from "./formEdit";
 import type { Form } from "@shared/types/formType";
+import { useAuth } from "@clerk/clerk-react";
 
 export function FormList(){
     const [forms,setForms] = useState<Form[]>([]);
+    const { getToken } = useAuth()
 
     useEffect(() => {
         async function loadForms(){
             try {
-                const data = await fetchForms(null);
+                const t = await getToken()
+
+                if (!t) throw new Error("Token Error");
+                const data = await fetchForms(t);
                 setForms(data);
             }   catch (err) {
                 console.error("Error fetching forms:", err);

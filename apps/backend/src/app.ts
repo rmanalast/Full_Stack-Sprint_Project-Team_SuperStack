@@ -6,8 +6,9 @@ import dotenv from "dotenv";
 import corsOptions from "../config/cors";
 import setupSwagger from "../config/swagger";
 import errorHandler from "./api/v1/middleware/errorHandler";
-import formRoutes from "./api/v1/routes/formRoutes";
+import { clerkMiddleware } from "@clerk/express";
 
+import formRoutes from "./api/v1/routes/formRoutes";
 import { wishlistRoute } from "./api/v1/routes/wishlistRoutes";
 import rentalRoutes from "../src/api/v1/routes/rentalRoutes";
 
@@ -27,6 +28,10 @@ app.use(express.json());
 // see https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
 app.use(cors(corsOptions));
 
+// add clerk middleware
+app.use(clerkMiddleware());
+
+
 // invoke swagger middleware for serving docs in /api-docs
 setupSwagger(app);
 
@@ -43,6 +48,8 @@ app.use("/api/v1/wishlist", wishlistRoute);
 
 // Rental routes
 app.use("/api/v1", rentalRoutes); // ADD ROUTES HERE
+
+app.use(clerkMiddleware());
 
 //errorhandler catches errors as last element in middleware chain
 // occurs when "next" is invoked
