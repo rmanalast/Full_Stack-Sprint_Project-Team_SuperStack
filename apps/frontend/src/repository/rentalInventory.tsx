@@ -5,7 +5,7 @@ type RentalsResponseJSON = {message: string, data: Rental[]};
 
 // Base url for backend
 // Vite provides this value from the .env file rather than dotenv package
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000";
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 const BASE_URL = `${API_BASE}/api/v1`;
 const RENTAL_ENDPOINT = "/rentals";
 

@@ -1,4 +1,4 @@
-import type { Inventory } from '../types/inventoryType';
+import type { Inventory } from '../../../../types/inventoryType';
 import { InventoryList } from './mockInventory';
 
 /**

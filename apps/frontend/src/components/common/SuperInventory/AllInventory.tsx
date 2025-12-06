@@ -5,7 +5,7 @@ Renders all Inventory related lists.
 Title and list data are passed to as props, then render on landing page.
 */ 
 
-import InventoryList, { type Inventory } from '../../../data/itemsList';
+import { type Inventory } from '../../../data/itemsList';
 import '../cart/cartStyles.css'
 
 
@@ -16,13 +16,12 @@ type Props = {
   shareAddCart: (item: Inventory) => void;
 };
 
-
 export function DisplayInventory({ items, shareAddCart }: Props) {
   return (
     <div>
       <h2>Inventory List</h2>
       <ul>
-        {InventoryList.map((item: Inventory) => (
+        {items.map((item: Inventory) => (
             <li key={item.sku}>
                 <div className='item-box'>
                     <img src={item.Image.src} alt={item.Image.alt || item.name} />

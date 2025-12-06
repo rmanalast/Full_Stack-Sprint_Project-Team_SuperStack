@@ -6,31 +6,26 @@ import { AddCart } from './addDropCart';
 import './formStyles.css'
 import { createForm } from '../../../repository/formRepo';
 import { FormList } from './formList';
-
-
-// Define a TypeScript type for the contact form data
-type Contact = {
-    name:string;
-    email:string;
-    card:string
-    expiry:string;
-    cve:string;
-};
+import type { Form } from '@shared/types/formType';
+import { useAuth } from "@clerk/clerk-react";
 
 
 // Define the ContactForm component
 export function ContactForm(){
 
     const [showList, setShowList] = useState(false);
-
-    const [contact, setContact] = useState<Contact>({
+    const [contact, setContact] = useState<Form>({
+        id: 0,
         name:"",
         email:"",
         card:"",
         expiry:"",
         cve:"",
+        createdAt:"",
+        updatedAt:""
+    });
 
-    })
+    const { getToken } = useAuth()
 
     const [isPaid, setIsPaid] = useState(false);
 
@@ -38,10 +33,14 @@ export function ContactForm(){
     e.preventDefault();
     try {
 
-        const sessionToken = null;
-        const savedForm = await createForm(contact, sessionToken);
-        console.log("Form saved:", savedForm);
-        setIsPaid(true);
+    const sessionToken = await getToken();
+
+    if (!sessionToken) {
+        throw new Error("User Error")
+    }
+
+    await createForm(contact, sessionToken);    
+    setIsPaid(true);
 
     } catch(err){
         console.error("Error saving form:", err);

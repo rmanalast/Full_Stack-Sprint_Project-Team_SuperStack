@@ -1,5 +1,5 @@
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-import { useAuth } from "@clerk/clerk-react";
+
 
 export const wishlistRepo = {
   async addEmail(email: string) {
@@ -18,9 +18,8 @@ export const wishlistRepo = {
     if (!res.ok) throw new Error("Failed to fetch wishlist");
     return res.json();
   },
-};
 
-async getUserWishlist(sessionToken: string) {
+  async getUserWishlist(sessionToken: string) {
   const res = await fetch(`${BASE_URL}/api/v1/wishlist/user`, {
     headers: {
       Authorization: `Bearer ${sessionToken}`
@@ -28,4 +27,4 @@ async getUserWishlist(sessionToken: string) {
   });
 
   return res.json();
-}
+}};
