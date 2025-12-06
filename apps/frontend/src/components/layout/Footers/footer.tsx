@@ -1,4 +1,4 @@
-import "./Footer.css";
+import "./footer.css";
 
 function Footer() {
     const dateO = new Date().getFullYear();
